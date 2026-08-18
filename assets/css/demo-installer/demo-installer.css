@@ -1,0 +1,106 @@
+.webnova-installer-wrap {
+    max-width: 1000px;
+}
+
+.webnova-installer-container {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.webnova-installer-sidebar {
+    width: 300px;
+    flex-shrink: 0;
+}
+
+.webnova-installer-main {
+    flex-grow: 1;
+}
+
+.webnova-installer-card {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.webnova-installer-card h2 {
+    margin-top: 0;
+}
+
+.webnova-installer-card button {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.webnova-steps-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.webnova-steps-list li {
+    padding: 8px 0;
+    border-bottom: 1px solid #f0f0f1;
+    color: #646970;
+}
+
+.webnova-steps-list li:last-child {
+    border-bottom: none;
+}
+
+.webnova-steps-list li.active {
+    font-weight: bold;
+    color: #2271b1;
+}
+
+.webnova-steps-list li.completed {
+    color: #00a32a;
+}
+
+.webnova-steps-list li.completed::before {
+    content: '✓ ';
+}
+
+.webnova-steps-list li.failed {
+    color: #d63638;
+}
+
+.webnova-installer-log-box {
+    background: #fff;
+    border: 1px solid #ccd0d4;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.webnova-installer-log-box h3 {
+    margin: 0;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccd0d4;
+    background: #f6f7f7;
+}
+
+.webnova-log {
+    padding: 20px;
+    height: 400px;
+    overflow-y: auto;
+    font-family: monospace;
+    background: #1d2327;
+    color: #f0f0f1;
+}
+
+.webnova-log p {
+    margin: 0 0 5px 0;
+}
+
+.webnova-log .log-info {
+    color: #f0f0f1;
+}
+
+.webnova-log .log-success {
+    color: #7bdcb5;
+}
+
+.webnova-log .log-error {
+    color: #ffabaf;
+}

@@ -1,0 +1,26 @@
+.editor-styles-wrapper .wn-section {
+  max-width: none;
+}
+
+.editor-styles-wrapper .wn-section.alignfull {
+  width: 100%;
+  max-width: none;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.editor-styles-wrapper .wn-container {
+  max-width: var(--wn-container);
+}
+
+.editor-styles-wrapper .wn-hero--business {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.editor-styles-wrapper .wn-hero--business p,
+.editor-styles-wrapper .wn-hero--business h1,
+.editor-styles-wrapper .wn-hero--business h2,
+.editor-styles-wrapper .wn-hero--business h3 {
+  font-family: inherit;
+}

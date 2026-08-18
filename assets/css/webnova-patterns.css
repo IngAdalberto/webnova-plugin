@@ -1,0 +1,2638 @@
+:root {
+  --wn-color-primary: #061B4A;
+  --wn-color-primary-rgb: 6 27 74;
+  --wn-color-accent: #EB472A;
+  --wn-color-accent-rgb: 235 71 42;
+  --wn-color-white: #FFFFFF;
+  --wn-color-white-rgb: 255 255 255;
+  --wn-color-light-rgb: 245 247 250;
+  --wn-color-light: #F5F7FA;
+  --wn-color-text: #1F2937;
+  --wn-color-text-muted: #6B7280;
+  --wn-color-border: #E5E7EB;
+  --wn-color-success: #2E7D32;
+  --wn-color-success-light: #DDF8EA;
+  --wn-container: 100%;
+  --wn-site-width: 100%;
+  --wn-site-gutter: 0px;
+  --wn-radius: 18px;
+  --wn-shadow: 0 18px 45px rgb(var(--wn-color-primary-rgb) / 0.12);
+}
+
+.wn-section {
+  box-sizing: border-box;
+  margin-block: 0 !important;
+}
+
+:where(.entry-content, .wp-site-blocks, main.wp-block-group) > .wn-section,
+:where(.entry-content, .wp-site-blocks, main.wp-block-group) > .wp-block-group.wn-section {
+  margin-block-start: 0 !important;
+  margin-block-end: 0 !important;
+}
+
+.wn-section.alignfull {
+  width: min(calc(100% - var(--wn-site-gutter, 0px)), var(--wn-site-width, 100%));
+  max-width: var(--wn-site-width, 100%);
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  margin-inline: auto !important;
+}
+
+.wn-section *,
+.wn-section *::before,
+.wn-section *::after {
+  box-sizing: border-box;
+}
+
+.wn-container {
+  width: calc(100% - 28px);
+  max-width: var(--wn-container) !important;
+  margin: 0 auto;
+}
+
+.wn-hero--business {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(18px, 2.5vw, 28px) 0 clamp(24px, 4vw, 40px);
+  color: var(--wn-color-primary);
+  background:
+    linear-gradient(180deg, rgb(var(--wn-color-light-rgb, 245 247 250) / 0.46), transparent 34%),
+    var(--wn-color-white);
+}
+
+.wn-section.wn-hero--business,
+.wp-block-group.alignfull.wn-section.wn-hero--business {
+  padding-block-start: clamp(8px, 1.4vw, 20px) !important;
+  padding-block-end: clamp(24px, 3.5vw, 40px) !important;
+}
+
+.wn-hero--business::before {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background-image:
+    linear-gradient(rgb(var(--wn-color-primary-rgb) / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--wn-color-primary-rgb) / 0.035) 1px, transparent 1px);
+  background-position: center right;
+  background-size: 64px 64px;
+  mask-image: linear-gradient(90deg, transparent 0%, rgba(0, 0, 0, 0.34) 52%, rgba(0, 0, 0, 0.08) 100%);
+  pointer-events: none;
+}
+
+.wn-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(360px, 1.05fr);
+  gap: clamp(30px, 5vw, 64px);
+  align-items: start;
+}
+
+.wn-hero__content {
+  padding-top: clamp(10px, 1.5vw, 22px);
+}
+
+.wn-hero__content > * {
+  margin-top: 0;
+}
+
+.wn-eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 18px;
+  padding: 8px 13px;
+  border: 1px solid rgb(var(--wn-color-accent-rgb) / 0.2);
+  border-radius: 999px;
+  color: var(--wn-color-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  background: rgb(var(--wn-color-accent-rgb) / 0.08);
+}
+
+.wn-hero__title {
+  max-width: 680px;
+  margin-bottom: 8px;
+  color: var(--wn-color-primary);
+  font-size: clamp(3rem, 5vw, 4.7rem);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+  text-shadow: none;
+}
+
+.wn-hero__subtitle {
+  position: relative;
+  max-width: 720px;
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-bottom: 24px;
+  color: var(--wn-color-accent);
+  font-size: clamp(2.85rem, 5vw, 4.55rem);
+  font-weight: 900;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.wn-hero__subtitle::after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: min(112px, 28%);
+  height: 4px;
+  content: "";
+  background: var(--wn-color-accent);
+}
+
+.wn-hero__text {
+  max-width: 560px;
+  margin-bottom: 28px;
+  color: var(--wn-color-text);
+  font-size: clamp(1.05rem, 1.35vw, 1.18rem);
+  line-height: 1.65;
+}
+
+.wn-hero__actions {
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.wn-button .wp-block-button__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 14px 22px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-decoration: none;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+
+.wn-button .wp-block-button__link:hover,
+.wn-button .wp-block-button__link:focus {
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.wn-button--primary .wp-block-button__link {
+  color: var(--wn-color-white);
+  background: var(--wn-color-accent);
+  box-shadow: 0 18px 34px rgb(var(--wn-color-accent-rgb) / 0.28);
+}
+
+.wn-button--secondary .wp-block-button__link {
+  color: var(--wn-color-primary);
+  border-color: rgb(var(--wn-color-primary-rgb) / 0.18);
+  background: var(--wn-color-white);
+}
+
+.wn-hero__benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.wn-hero__benefits p {
+  margin: 0;
+  padding: 9px 13px;
+  border-radius: 999px;
+  color: var(--wn-color-primary);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgb(var(--wn-color-primary-rgb) / 0.06);
+}
+
+.wn-hero__visual {
+  position: relative;
+  display: grid;
+  min-height: 360px;
+  place-items: center;
+}
+
+.wn-hero__image {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: min(100%, 650px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--wn-color-border);
+  border-radius: 8px;
+  background: var(--wn-color-white);
+  box-shadow: 0 34px 86px rgb(var(--wn-color-primary-rgb) / 0.18);
+}
+
+.wn-hero__image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(500px, calc(100vh - 210px));
+  max-height: min(500px, calc(100svh - 210px));
+  object-fit: contain;
+  opacity: 1;
+}
+
+.wn-business-card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--wn-radius);
+  color: var(--wn-color-text);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 247, 250, 0.94));
+  box-shadow: 0 34px 80px rgba(0, 0, 0, 0.28);
+}
+
+.wn-business-card::before {
+  display: block;
+  width: 72px;
+  height: 6px;
+  margin-bottom: 28px;
+  border-radius: 999px;
+  content: "";
+  background: linear-gradient(90deg, var(--wn-color-accent), color-mix(in srgb, var(--wn-color-accent) 62%, var(--wn-color-white)));
+}
+
+.wn-business-card__top,
+.wn-business-card__metrics {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wn-business-card__label,
+.wn-business-card__status,
+.wn-business-card__title,
+.wn-metric__value,
+.wn-metric__label,
+.wn-business-card__list p,
+.wn-hero__floating-card {
+  margin-top: 0;
+}
+
+.wn-business-card__label {
+  margin-bottom: 0;
+  color: var(--wn-color-text-muted);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.wn-business-card__status {
+  margin-bottom: 0;
+  padding: 7px 11px;
+  border-radius: 999px;
+  color: var(--wn-color-success);
+  font-size: 0.78rem;
+  font-weight: 800;
+  background: var(--wn-color-success-light);
+}
+
+.wn-business-card__title {
+  margin: 26px 0;
+  color: var(--wn-color-primary);
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.15;
+}
+
+.wn-business-card__metrics {
+  margin-bottom: 28px;
+}
+
+.wn-metric {
+  flex: 1;
+  padding: 18px;
+  border: 1px solid var(--wn-color-border);
+  border-radius: 16px;
+  background: var(--wn-color-white);
+  box-shadow: var(--wn-shadow);
+}
+
+.wn-metric__value {
+  margin-bottom: 4px;
+  color: var(--wn-color-accent);
+  font-size: 1.7rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.wn-metric__label {
+  margin-bottom: 0;
+  color: var(--wn-color-text-muted);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.wn-business-card__list {
+  display: grid;
+  gap: 12px;
+}
+
+.wn-business-card__list p {
+  position: relative;
+  margin-bottom: 0;
+  padding: 14px 14px 14px 42px;
+  border-radius: 14px;
+  color: var(--wn-color-text);
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: var(--wn-color-light);
+}
+
+.wn-business-card__list p::before {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 15px;
+  height: 15px;
+  border-radius: 999px;
+  content: "";
+  background: var(--wn-color-accent);
+  box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.72);
+}
+
+.wn-hero__floating-card {
+  position: absolute;
+  right: -8px;
+  bottom: 36px;
+  width: min(260px, 70%);
+  margin-bottom: 0;
+  padding: 18px 20px;
+  border-radius: 16px;
+  color: var(--wn-color-primary);
+  font-weight: 800;
+  background: var(--wn-color-white);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+}
+
+.webnova-services-section {
+  --webnova-services-bg: var(--wn-color-light, #F5F7FA);
+  --webnova-services-card-bg: var(--wn-color-white, #FFFFFF);
+  --webnova-services-primary: var(--wn-color-primary, #061B4A);
+  --webnova-services-accent: var(--wn-color-accent, #EB472A);
+  --webnova-services-title: var(--wn-color-primary, #061B4A);
+  --webnova-services-text: var(--wn-color-text, #1F2937);
+  --webnova-services-muted: var(--wn-color-text-muted, #6B7280);
+  --webnova-services-button-bg: var(--wn-color-primary, #061B4A);
+  --webnova-services-button-hover: var(--wn-color-accent, #EB472A);
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 40px) 0;
+  background: var(--webnova-services-bg);
+}
+
+.webnova-services-container {
+  display: grid;
+  gap: clamp(20px, 3vw, 30px);
+}
+
+.webnova-services-header {
+  display: grid;
+  justify-items: center;
+}
+
+.webnova-services-title {
+  max-width: 840px;
+  margin: 0;
+  color: var(--webnova-services-title);
+  font-size: clamp(1.9rem, 3.6vw, 3rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.webnova-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(22px, 3vw, 30px);
+  align-items: stretch;
+}
+
+.webnova-services-grid > .webnova-service-card {
+  margin-block-start: 0;
+}
+
+.webnova-service-card {
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid rgb(var(--wn-color-primary-rgb) / 0.08);
+  border-radius: 8px;
+  background: var(--webnova-services-card-bg);
+  box-shadow: 0 18px 46px rgb(var(--wn-color-primary-rgb) / 0.1);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.webnova-service-card:hover,
+.webnova-service-card:focus-within {
+  transform: translateY(-4px);
+  border-color: color-mix(in srgb, var(--webnova-services-accent) 32%, transparent);
+  box-shadow: 0 26px 58px rgb(var(--wn-color-primary-rgb) / 0.16);
+}
+
+.webnova-service-card > .webnova-service-image {
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  margin: 0;
+  background: var(--webnova-services-card-bg);
+}
+
+.webnova-service-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px 8px 0 0;
+  object-fit: contain;
+}
+
+.webnova-service-body {
+  display: flex;
+  min-height: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 22px;
+  padding: clamp(28px, 4vw, 42px) clamp(24px, 3vw, 34px) 34px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.9), var(--webnova-services-card-bg) 38%),
+    var(--webnova-services-card-bg);
+}
+
+.webnova-service-body > *,
+.webnova-service-heading-row > *,
+.webnova-service-title-wrap > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.webnova-service-heading-row {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  margin-top: -10px;
+}
+
+.webnova-service-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 64px;
+  height: 64px;
+  margin: 0;
+  border: 4px solid var(--webnova-services-card-bg);
+  border-radius: 999px;
+  place-items: center;
+  color: var(--wn-color-white, #FFFFFF);
+  background: var(--webnova-services-primary);
+  box-shadow: 0 14px 30px rgb(var(--wn-color-primary-rgb) / 0.18);
+}
+
+.webnova-service-icon::after {
+  position: absolute;
+  top: 8px;
+  right: -13px;
+  width: 1px;
+  height: 54px;
+  content: "";
+  background: color-mix(in srgb, var(--webnova-services-primary) 28%, transparent);
+}
+
+.webnova-service-card--accent .webnova-service-icon,
+.webnova-service-card--accent .webnova-service-button .wp-block-button__link {
+  background: var(--webnova-services-accent);
+}
+
+.webnova-service-icon svg {
+  display: block;
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.webnova-service-title-wrap {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+}
+
+.webnova-service-title {
+  margin: 0;
+  color: var(--webnova-services-title);
+  font-size: clamp(1.28rem, 2.1vw, 1.62rem);
+  font-weight: 900;
+  line-height: 1.16;
+  text-wrap: balance;
+}
+
+.webnova-service-line {
+  display: block;
+  width: 34px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--webnova-services-accent);
+}
+
+.webnova-service-card--accent .webnova-service-line {
+  background: var(--webnova-services-primary);
+}
+
+.webnova-service-text {
+  margin: 0;
+  color: var(--webnova-services-text);
+  font-size: 1rem;
+  line-height: 1.72;
+}
+
+.webnova-service-actions {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.webnova-service-button .wp-block-button__link {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 24px;
+  border-radius: 8px;
+  color: var(--wn-color-white, #FFFFFF);
+  font-size: 0.98rem;
+  font-weight: 850;
+  line-height: 1;
+  background: var(--webnova-services-button-bg);
+  box-shadow: 0 16px 32px rgb(var(--wn-color-primary-rgb) / 0.2);
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease;
+}
+
+.webnova-service-button .wp-block-button__link::after {
+  margin-left: 12px;
+  content: "\2192";
+}
+
+.webnova-service-button .wp-block-button__link:hover,
+.webnova-service-button .wp-block-button__link:focus {
+  transform: translateY(-2px);
+  background: var(--webnova-services-button-hover);
+  box-shadow: 0 20px 42px rgb(var(--wn-color-accent-rgb) / 0.22);
+}
+
+.webnova-cta-section {
+  padding: 24px;
+  color: var(--wn-color-white);
+  background: var(--wn-color-primary);
+}
+
+.webnova-cta-section h1,
+.webnova-cta-section h2,
+.webnova-cta-section h3,
+.webnova-cta-section p {
+  color: inherit;
+}
+
+.webnova-cta-section--highlight {
+  margin-block: 0 !important;
+  padding: clamp(8px, 1.8vw, 16px) 0;
+  color: var(--wn-color-primary, #061B4A);
+  background: var(--wn-color-white, #FFFFFF);
+}
+
+.webnova-cta-highlight {
+  overflow: hidden;
+  margin-block: 0 !important;
+  padding: clamp(22px, 3vw, 36px);
+  border: 1px solid #F1DDD5;
+  border-radius: clamp(22px, 3vw, 34px);
+  color: var(--wn-color-primary, #061B4A);
+  background:
+    radial-gradient(circle at 18% 16%, rgb(var(--wn-color-accent-rgb) / 0.08), transparent 30%),
+    linear-gradient(135deg, #FFF8F5 0%, #FFFFFF 54%, #FFF8F5 100%);
+  box-shadow: 0 22px 54px rgb(var(--wn-color-primary-rgb) / 0.1);
+}
+
+.webnova-cta-inner {
+  display: flex;
+  gap: clamp(18px, 3vw, 34px);
+  align-items: stretch;
+  margin-block: 0 !important;
+}
+
+.webnova-cta-media {
+  display: flex;
+  flex: 0 1 34%;
+  min-width: min(100%, 220px);
+  align-items: center;
+  justify-content: center;
+  margin-block: 0 !important;
+}
+
+.webnova-cta-media .wp-block-image,
+.webnova-cta-media .wp-block-image img {
+  width: 100%;
+  max-width: 100%;
+}
+
+.webnova-cta-media .wp-block-image {
+  margin: 0;
+}
+
+.webnova-cta-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.webnova-cta-image-placeholder {
+  display: grid;
+  width: 100%;
+  min-height: clamp(190px, 22vw, 300px);
+  padding: clamp(20px, 3vw, 32px);
+  border: 1.5px dashed rgb(var(--wn-color-accent-rgb) / 0.36);
+  border-radius: 24px;
+  place-items: center;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgb(var(--wn-color-white-rgb) / 0.86), rgb(var(--wn-color-white-rgb) / 0.6)),
+    #FFF8F5;
+}
+
+.webnova-cta-image-placeholder > * {
+  margin-block: 0;
+}
+
+.webnova-cta-image-placeholder p {
+  max-width: 220px;
+  color: rgb(var(--wn-color-primary-rgb) / 0.72);
+  font-size: 0.95rem;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.webnova-cta-placeholder-icon {
+  display: grid;
+  width: 78px;
+  height: 78px;
+  margin-bottom: 10px;
+  border-radius: 999px;
+  place-items: center;
+  color: var(--wn-color-primary, #061B4A);
+  background: var(--wn-color-white, #FFFFFF);
+  box-shadow: 0 14px 34px rgb(var(--wn-color-primary-rgb) / 0.1);
+}
+
+.webnova-cta-placeholder-icon svg {
+  display: block;
+  width: 44px;
+  height: 44px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.7;
+}
+
+.webnova-cta-placeholder-icon svg path:nth-child(2),
+.webnova-cta-placeholder-icon svg circle {
+  color: var(--wn-color-accent, #EB472A);
+  stroke: currentcolor;
+}
+
+.webnova-cta-divider {
+  align-self: stretch;
+  width: 3px;
+  min-height: auto;
+  height: auto !important;
+  margin: 0;
+  border-radius: 999px;
+  background: var(--wn-color-accent, #EB472A);
+}
+
+.webnova-cta-content {
+  display: flex;
+  flex: 1 1 420px;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  margin-block: 0 !important;
+}
+
+.webnova-cta-content > * {
+  margin-block-start: 0;
+}
+
+.webnova-cta-content > *:last-child {
+  margin-block-end: 0;
+}
+
+.webnova-cta-badge {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 9px 18px;
+  border: 1px solid var(--wn-color-accent, #EB472A);
+  border-radius: 999px;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: 0.82rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  background: rgb(var(--wn-color-white-rgb) / 0.76);
+}
+
+.webnova-cta-badge span {
+  color: var(--wn-color-accent, #EB472A);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.webnova-cta-title {
+  max-width: 820px;
+  margin-bottom: 8px;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: clamp(2rem, 4vw, 3.55rem);
+  font-weight: 950;
+  line-height: 1.08;
+  letter-spacing: 0;
+}
+
+.webnova-cta-subtitle {
+  max-width: 820px;
+  margin-bottom: 14px;
+  color: var(--wn-color-accent, #EB472A);
+  font-size: clamp(1.45rem, 2.4vw, 2.35rem);
+  font-weight: 950;
+  line-height: 1.12;
+  letter-spacing: 0;
+}
+
+.webnova-cta-text {
+  max-width: 720px;
+  margin-bottom: 20px;
+  color: rgb(var(--wn-color-primary-rgb) / 0.86);
+  font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+  line-height: 1.64;
+}
+
+.webnova-cta-actions {
+  display: flex;
+  gap: 14px 22px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: clamp(20px, 3vw, 28px);
+}
+
+.webnova-cta-primary .wp-block-button__link,
+.webnova-cta-secondary .wp-block-button__link {
+  display: inline-flex;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  font-weight: 900;
+  line-height: 1;
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.webnova-cta-primary .wp-block-button__link {
+  padding: 17px 28px;
+  border: 1px solid var(--wn-color-accent, #EB472A);
+  color: var(--wn-color-white, #FFFFFF);
+  background: var(--wn-color-accent, #EB472A);
+  box-shadow: 0 16px 34px rgb(var(--wn-color-accent-rgb) / 0.28);
+}
+
+.webnova-cta-primary .wp-block-button__link::before {
+  margin-right: 10px;
+  content: "\25B2";
+  font-size: 0.84em;
+  transform: rotate(45deg);
+}
+
+.webnova-cta-secondary .wp-block-button__link {
+  min-height: 48px;
+  padding: 12px 4px;
+  border: 0;
+  border-bottom: 2px solid var(--wn-color-accent, #EB472A);
+  border-radius: 0;
+  color: var(--wn-color-primary, #061B4A);
+  background: transparent;
+}
+
+.webnova-cta-secondary .wp-block-button__link::after {
+  margin-left: 12px;
+  color: var(--wn-color-accent, #EB472A);
+  content: "\2192";
+}
+
+.webnova-cta-primary .wp-block-button__link:hover,
+.webnova-cta-primary .wp-block-button__link:focus {
+  transform: translateY(-2px);
+  background: #D93A20;
+  box-shadow: 0 20px 42px rgb(var(--wn-color-accent-rgb) / 0.34);
+}
+
+.webnova-cta-secondary .wp-block-button__link:hover,
+.webnova-cta-secondary .wp-block-button__link:focus {
+  color: var(--wn-color-accent, #EB472A);
+}
+
+.webnova-cta-features {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: center;
+}
+
+.webnova-cta-feature-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  min-width: 0;
+}
+
+.webnova-cta-feature-item:not(:first-child) {
+  padding-left: 18px;
+  border-left: 1px solid #F1DDD5;
+}
+
+.webnova-cta-feature-item > * {
+  margin: 0;
+}
+
+.webnova-cta-feature-icon {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  place-items: center;
+  color: var(--wn-color-primary, #061B4A);
+}
+
+.webnova-cta-feature-icon--accent {
+  color: var(--wn-color-accent, #EB472A);
+}
+
+.webnova-cta-feature-icon svg {
+  display: block;
+  width: 40px;
+  height: 40px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.3;
+}
+
+.webnova-cta-feature-item p {
+  margin: 0;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: 0.95rem;
+  font-weight: 850;
+  line-height: 1.24;
+}
+
+.webnova-cta-whatsapp {
+  overflow: hidden;
+  padding: clamp(10px, 1.8vw, 18px) 0;
+  color: var(--wn-color-white);
+  background: var(--wn-color-white);
+}
+
+.webnova-cta-whatsapp,
+.webnova-cta-whatsapp *,
+.webnova-cta-whatsapp *::before,
+.webnova-cta-whatsapp *::after {
+  box-sizing: border-box;
+}
+
+.webnova-cta-whatsapp__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(128px, 0.62fr) auto minmax(300px, 2.15fr) auto minmax(360px, 1.65fr);
+  gap: clamp(16px, 2.6vw, 32px);
+  align-items: center;
+  overflow: hidden;
+  margin-block: 0 !important;
+  padding: clamp(18px, 2.2vw, 28px) clamp(18px, 3vw, 36px);
+  border: 1px solid rgb(var(--wn-color-primary-rgb) / 0.22);
+  border-radius: 8px;
+  color: var(--wn-color-white);
+  background: var(--wn-color-primary);
+  box-shadow: 0 18px 42px rgb(var(--wn-color-primary-rgb) / 0.16);
+}
+
+.webnova-cta-whatsapp__inner > * {
+  margin-block: 0;
+}
+
+.webnova-cta-whatsapp__left,
+.webnova-cta-whatsapp__content,
+.webnova-cta-whatsapp__features {
+  position: relative;
+  z-index: 1;
+}
+
+.webnova-cta-whatsapp__left {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-width: 0;
+  text-align: center;
+}
+
+.webnova-cta-whatsapp__icon-link {
+  width: clamp(78px, 7.4vw, 116px);
+  margin: 0 !important;
+}
+
+.webnova-cta-whatsapp__icon-link a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  outline-offset: 5px;
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.webnova-cta-whatsapp__icon-link a:hover,
+.webnova-cta-whatsapp__icon-link a:focus {
+  transform: translateY(-2px);
+  filter: drop-shadow(0 12px 22px rgb(var(--wn-color-white-rgb) / 0.16));
+}
+
+.webnova-cta-whatsapp__icon img {
+  display: block;
+  width: 100%;
+  height: auto;
+  animation: webnova-cta-whatsapp-float 2.8s ease-in-out infinite;
+  filter: drop-shadow(0 10px 18px rgb(var(--wn-color-primary-rgb) / 0.22));
+}
+
+.webnova-cta-whatsapp__click {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 10px;
+  font-size: clamp(1.05rem, 1.7vw, 1.5rem);
+  font-weight: 900;
+  line-height: 1.05;
+}
+
+.webnova-cta-whatsapp__click::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  content: "";
+  border-radius: 999px;
+  background: var(--wn-color-accent);
+}
+
+.webnova-cta-whatsapp__click a {
+  color: var(--wn-color-white);
+  text-decoration: none;
+}
+
+.webnova-cta-whatsapp__click a:hover,
+.webnova-cta-whatsapp__click a:focus {
+  color: var(--wn-color-accent);
+  text-decoration: none;
+}
+
+.webnova-cta-whatsapp__divider {
+  width: 2px;
+  min-height: 90px;
+  height: auto !important;
+  margin: 0 !important;
+  border-radius: 999px;
+  background: rgb(var(--wn-color-white-rgb) / 0.58);
+}
+
+.webnova-cta-whatsapp__content {
+  min-width: 0;
+}
+
+.webnova-cta-whatsapp__title {
+  margin: 0 0 2px;
+  color: var(--wn-color-white);
+  font-size: clamp(1.65rem, 3.1vw, 3.05rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.webnova-cta-whatsapp__subtitle {
+  max-width: 760px;
+  margin: 0;
+  color: rgb(var(--wn-color-white-rgb) / 0.88);
+  font-size: clamp(1rem, 1.45vw, 1.35rem);
+  font-weight: 650;
+  line-height: 1.3;
+}
+
+.webnova-cta-whatsapp__features {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(72px, 1fr));
+  gap: clamp(10px, 1.3vw, 20px);
+  align-items: stretch;
+  min-width: 0;
+  padding: clamp(10px, 1.1vw, 16px);
+  border: 1px solid rgb(var(--wn-color-white-rgb) / 0.04);
+  border-radius: 4px;
+  background: rgb(var(--wn-color-primary-rgb) / 0.22);
+}
+
+.webnova-cta-whatsapp__feature {
+  display: grid;
+  gap: 8px;
+  justify-items: center;
+  min-width: 0;
+  margin: 0 !important;
+  text-align: center;
+}
+
+.webnova-cta-whatsapp__feature > * {
+  margin: 0;
+}
+
+.webnova-cta-whatsapp__feature-icon {
+  display: grid;
+  width: clamp(42px, 4vw, 58px);
+  height: clamp(42px, 4vw, 58px);
+  place-items: center;
+  color: var(--wn-color-accent);
+}
+
+.webnova-cta-whatsapp__feature-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2.5;
+}
+
+.webnova-cta-whatsapp__feature:nth-child(even) .webnova-cta-whatsapp__feature-icon {
+  color: var(--wn-color-white);
+}
+
+.webnova-cta-whatsapp__feature-text {
+  margin: 0;
+  color: var(--wn-color-white);
+  font-size: clamp(0.82rem, 1vw, 1.05rem);
+  font-weight: 750;
+  line-height: 1.12;
+}
+
+.webnova-cta-whatsapp__phone {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(24px, 1fr) auto minmax(24px, 1fr);
+  gap: clamp(12px, 2vw, 24px);
+  align-items: center;
+  margin: 0;
+  color: var(--wn-color-white);
+  font-size: clamp(1.15rem, 1.85vw, 1.65rem);
+  font-weight: 950;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.webnova-cta-whatsapp__phone::before,
+.webnova-cta-whatsapp__phone::after {
+  display: block;
+  height: 3px;
+  content: "";
+  border-radius: 999px;
+  background: var(--wn-color-accent);
+}
+
+@keyframes webnova-cta-whatsapp-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .webnova-cta-whatsapp__icon img {
+    animation: none;
+  }
+}
+
+.webnova-footer-section {
+  padding: 32px 24px;
+  color: var(--wn-color-white);
+  background: var(--wn-color-primary);
+}
+
+.webnova-footer-section p {
+  margin: 0;
+  color: inherit;
+}
+
+.wn-pattern-benefits {
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 40px) 0;
+  color: var(--wn-color-primary, #061B4A);
+  background: var(--wn-color-white, #FFFFFF);
+}
+
+.wn-pattern-benefits__inner {
+  display: grid;
+  gap: clamp(18px, 2.5vw, 26px);
+}
+
+.wn-pattern-benefits__header {
+  display: grid;
+  gap: 18px;
+}
+
+.wn-pattern-benefits__title {
+  display: grid;
+  grid-template-columns: minmax(32px, 1fr) auto minmax(32px, 1fr);
+  gap: clamp(14px, 3vw, 28px);
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: clamp(1.65rem, 3vw, 2.4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.wn-pattern-benefits__title::before,
+.wn-pattern-benefits__title::after {
+  display: block;
+  width: 100%;
+  height: 3px;
+  border-radius: 999px;
+  content: "";
+  background: var(--wn-color-accent, #EB472A);
+}
+
+.wn-pattern-benefits__intro {
+  max-width: 760px;
+  margin: -6px auto 10px;
+  color: var(--wn-color-text-muted, #6B7280);
+  font-size: 1.05rem;
+  line-height: 1.65;
+}
+
+.wn-pattern-benefits--hide-intro .wn-pattern-benefits__intro,
+.wn-pattern-benefits--hide-numbers .wn-pattern-benefits__number {
+  display: none;
+}
+
+.wn-pattern-benefits__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 12px;
+}
+
+.wn-pattern-benefits__grid > .wn-pattern-benefits__card {
+  margin-block-start: 0;
+}
+
+.wn-pattern-benefits__card {
+  position: relative;
+  display: flex;
+  min-width: 0;
+  min-height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 34px 20px 26px;
+  border: 1px solid var(--wn-color-border);
+  border-radius: 18px;
+  text-align: center;
+  background: var(--wn-color-white, #FFFFFF);
+  box-shadow: 0 14px 34px rgb(var(--wn-color-primary-rgb) / 0.08);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.wn-pattern-benefits__card:hover,
+.wn-pattern-benefits__card:focus-within {
+  transform: translateY(-4px);
+  border-color: rgb(var(--wn-color-accent-rgb) / 0.28);
+  box-shadow: 0 22px 46px rgb(var(--wn-color-primary-rgb) / 0.13);
+}
+
+.wn-pattern-benefits__number {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  margin: -56px auto 18px;
+  border: 4px solid var(--wn-color-white, #FFFFFF);
+  border-radius: 999px;
+  place-items: center;
+  color: var(--wn-color-white, #FFFFFF);
+  font-size: 0.95rem;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--wn-color-accent, #EB472A);
+  box-shadow: 0 14px 24px rgb(var(--wn-color-accent-rgb) / 0.26);
+}
+
+.wn-pattern-benefits__icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 18px;
+  place-items: center;
+  color: var(--wn-color-primary, #061B4A);
+}
+
+.wn-pattern-benefits__icon svg {
+  display: block;
+  width: 64px;
+  height: 64px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 3;
+}
+
+.wn-pattern-benefits__icon img {
+  display: block;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+}
+
+.wn-pattern-benefits__icon .wn-pattern-benefits__icon-accent {
+  color: var(--wn-color-accent, #EB472A);
+  stroke: currentcolor;
+}
+
+.wn-pattern-benefits__content {
+  display: grid;
+  gap: 10px;
+  width: 100%;
+}
+
+.wn-pattern-benefits__card-title {
+  margin: 0;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: 1.02rem;
+  font-weight: 850;
+  line-height: 1.28;
+  text-wrap: balance;
+}
+
+.wn-pattern-benefits__text {
+  margin: 0;
+  color: var(--wn-color-text-muted, #6B7280);
+  font-size: 0.94rem;
+  line-height: 1.55;
+}
+
+.wn-pattern-benefits--no-separators .wn-pattern-benefits__card::before {
+  display: none;
+}
+
+.webnova-pricing-section {
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 40px) 0;
+  color: var(--wn-color-primary, #061B4A);
+  background: var(--wn-color-white, #FFFFFF);
+}
+
+.webnova-pricing-container {
+  display: grid;
+  gap: clamp(20px, 3vw, 30px);
+}
+
+.webnova-pricing-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(22px, 5vw, 64px);
+  align-items: start;
+}
+
+.webnova-pricing-title-group,
+.webnova-pricing-card {
+  min-width: 0;
+}
+
+.webnova-pricing-title {
+  margin: 0;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: clamp(2.3rem, 5vw, 4rem);
+  font-weight: 950;
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0;
+}
+
+.webnova-pricing-subtitle {
+  margin: 8px 0 0;
+  color: var(--wn-color-accent, #EB472A);
+  font-size: clamp(1.45rem, 3vw, 2.15rem);
+  font-weight: 900;
+  line-height: 1.08;
+}
+
+.webnova-pricing-description {
+  max-width: 500px;
+  margin: 4px 0 0;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: clamp(1rem, 1.35vw, 1.18rem);
+  font-weight: 650;
+  line-height: 1.55;
+}
+
+.webnova-pricing-description:empty {
+  display: none;
+}
+
+.webnova-pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  gap: clamp(18px, 2.2vw, 28px);
+  align-items: stretch;
+}
+
+.webnova-pricing-grid > .webnova-pricing-card,
+.webnova-pricing-grid > .wp-block-group.webnova-pricing-card {
+  margin-block-start: 0;
+}
+
+.webnova-pricing-card,
+.wp-block-group.webnova-pricing-card {
+  position: relative;
+  display: flex;
+  height: 100%;
+  min-height: 100%;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 32px clamp(20px, 2vw, 26px) 22px;
+  border: 1px solid color-mix(in srgb, var(--wn-color-accent) 34%, var(--wn-color-border));
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--wn-color-white) 96%, var(--wn-color-light));
+  box-shadow: 0 18px 42px rgb(var(--wn-color-primary-rgb) / 0.11);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.webnova-pricing-card:hover,
+.webnova-pricing-card:focus-within,
+.wp-block-group.webnova-pricing-card:hover,
+.wp-block-group.webnova-pricing-card:focus-within {
+  transform: translateY(-3px);
+  border-color: color-mix(in srgb, var(--wn-color-accent) 58%, var(--wn-color-border));
+  box-shadow: 0 26px 54px rgb(var(--wn-color-primary-rgb) / 0.16);
+}
+
+.webnova-pricing-card-title {
+  max-width: 250px;
+  min-height: 3.15em;
+  margin: 0 auto 14px;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: clamp(1.13rem, 1.5vw, 1.42rem);
+  font-weight: 950;
+  line-height: 1.12;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.webnova-pricing-ideal {
+  margin: 0;
+  color: var(--wn-color-accent, #EB472A);
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.webnova-pricing-audience {
+  min-height: 3.9em;
+  margin: 7px auto 14px;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.webnova-pricing-divider {
+  width: 100%;
+  height: 3px;
+  margin: 0 0 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--wn-color-accent, #EB472A);
+  opacity: 1;
+}
+
+.webnova-pricing-includes {
+  margin: 0 0 10px;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: 1.02rem;
+  font-weight: 850;
+  line-height: 1.25;
+}
+
+.webnova-pricing-list {
+  display: grid;
+  flex: 1 1 auto;
+  align-content: start;
+  gap: 10px;
+  margin: 0 0 24px;
+  padding: 0;
+  list-style: none;
+  color: var(--wn-color-primary, #061B4A);
+  font-size: 0.92rem;
+  font-weight: 650;
+  line-height: 1.32;
+}
+
+.webnova-pricing-list li {
+  position: relative;
+  min-height: 25px;
+  margin: 0;
+  padding-left: 36px;
+}
+
+.webnova-pricing-list li::before {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  display: grid;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--wn-color-success);
+  border-radius: 999px;
+  content: "\2713";
+  place-items: center;
+  color: var(--wn-color-success);
+  font-size: 0.9rem;
+  font-weight: 950;
+  line-height: 1;
+  background: var(--wn-color-white);
+}
+
+.webnova-pricing-card > .webnova-pricing-price,
+.wp-block-group.webnova-pricing-card > .wp-block-group.webnova-pricing-price,
+.webnova-pricing-price {
+  display: grid;
+  width: 100%;
+  min-height: 64px;
+  margin-top: auto !important;
+  margin-block-start: auto !important;
+  padding: 10px 12px;
+  border-radius: 8px;
+  place-items: center;
+  color: var(--wn-color-white, #FFFFFF);
+  background: var(--wn-color-primary, #061B4A);
+  box-shadow: 0 16px 32px rgb(var(--wn-color-primary-rgb) / 0.2);
+}
+
+.webnova-pricing-price p {
+  margin: 0;
+}
+
+.webnova-pricing-price-main {
+  color: var(--wn-color-white, #FFFFFF);
+  font-size: clamp(1.35rem, 1.8vw, 1.62rem);
+  font-weight: 950;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.webnova-pricing-price-main span {
+  display: inline-block;
+  margin-left: 5px;
+  font-size: 0.7rem;
+  font-weight: 850;
+  vertical-align: 0.18em;
+}
+
+.webnova-pricing-price-main--quote {
+  font-size: clamp(1.25rem, 1.7vw, 1.5rem);
+}
+
+.webnova-pricing-price-note {
+  color: var(--wn-color-white, #FFFFFF);
+  font-size: 0.8rem;
+  font-weight: 850;
+  line-height: 1.15;
+}
+
+.webnova-contact-section {
+  --webnova-blue: var(--wn-color-primary, #061B4A);
+  --webnova-orange: var(--wn-color-accent, #EB472A);
+  --webnova-white: var(--wn-color-white, #FFFFFF);
+  --webnova-contact-text: var(--wn-color-text, #1F2937);
+  --webnova-contact-muted: var(--wn-color-text-muted, #6B7280);
+  --webnova-contact-border: var(--wn-color-border, #E5E7EB);
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 40px) 0;
+  color: var(--webnova-blue);
+  background:
+    radial-gradient(circle at 88% 14%, rgb(var(--wn-color-accent-rgb) / 0.08), transparent 28%),
+    linear-gradient(180deg, var(--webnova-white), var(--wn-color-light, #F5F7FA));
+}
+
+.webnova-contact-wrap {
+  display: grid;
+  width: calc(100% - 28px);
+  max-width: 100% !important;
+  gap: clamp(22px, 3.5vw, 36px);
+}
+
+.webnova-contact-header {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  max-width: 980px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.webnova-contact-header > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.webnova-contact-container {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+  gap: clamp(24px, 3.2vw, 44px);
+  align-items: start;
+}
+
+.webnova-contact-form,
+.webnova-contact-info {
+  align-self: start;
+  min-width: 0;
+}
+
+.webnova-contact-form {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(26px, 4vw, 42px);
+  border: 1px solid rgb(var(--wn-color-primary-rgb) / 0.08);
+  border-radius: 8px;
+  background: var(--webnova-white);
+  box-shadow: 0 28px 70px rgb(var(--wn-color-primary-rgb) / 0.14);
+}
+
+.webnova-contact-form::before {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 5px;
+  content: "";
+  background: linear-gradient(90deg, var(--webnova-orange), var(--webnova-blue));
+}
+
+.webnova-contact-form > * {
+  margin-block-start: 0;
+}
+
+.webnova-contact-form-badge {
+  display: table;
+  margin: 0 auto 20px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  color: var(--webnova-blue);
+  font-size: 0.78rem;
+  font-weight: 850;
+  line-height: 1;
+  background: rgb(var(--wn-color-primary-rgb) / 0.08);
+}
+
+.webnova-contact-form-title {
+  margin: 0 0 8px;
+  color: var(--webnova-blue);
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.webnova-contact-form-help {
+  margin: 0 0 22px;
+  color: var(--webnova-contact-muted);
+  font-size: 0.96rem;
+  line-height: 1.55;
+}
+
+.webnova-contact-form .wp-block-shortcode {
+  margin: 0;
+}
+
+.webnova-contact-form .wpforms-container {
+  margin: 0;
+}
+
+.webnova-contact-form .wpforms-field-container {
+  display: grid;
+  gap: 18px;
+}
+
+.webnova-contact-form .wpforms-field {
+  position: relative;
+  min-width: 0;
+  padding: 0;
+}
+
+.webnova-contact-form .wpforms-field[aria-hidden="true"],
+.webnova-contact-form .wpforms-field[style*="display:none"],
+.webnova-contact-form .wpforms-field[style*="display: none"],
+.webnova-contact-form .wpforms-field[style*="position:absolute"],
+.webnova-contact-form .wpforms-field[style*="position: absolute"] {
+  display: none;
+}
+
+.webnova-contact-form .wpforms-field-label,
+.webnova-contact-form .wpforms-field-sublabel {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--webnova-blue);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.webnova-contact-form .wpforms-field-sublabel {
+  margin-top: 6px;
+  margin-bottom: 0;
+  color: var(--webnova-contact-muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.webnova-contact-form .wpforms-required-label {
+  color: var(--webnova-orange);
+}
+
+.webnova-contact-form .wpforms-field input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form .wpforms-field select:not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form .wpforms-field textarea:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  width: 100%;
+  min-height: 50px;
+  padding: 13px 15px;
+  border: 1px solid var(--webnova-contact-border);
+  border-radius: 8px;
+  color: var(--webnova-contact-text);
+  font: inherit;
+  line-height: 1.35;
+  background: var(--webnova-white);
+  box-shadow: inset 0 1px 0 rgb(var(--wn-color-primary-rgb) / 0.03);
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.webnova-contact-form .wpforms-field select:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  appearance: none;
+  padding-right: 42px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, var(--webnova-blue) 50%),
+    linear-gradient(135deg, var(--webnova-blue) 50%, transparent 50%);
+  background-position:
+    calc(100% - 22px) 50%,
+    calc(100% - 16px) 50%;
+  background-size: 6px 6px, 6px 6px;
+  background-repeat: no-repeat;
+}
+
+.webnova-contact-form .wpforms-field textarea:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  min-height: 132px;
+  resize: vertical;
+}
+
+.webnova-contact-form .wpforms-field input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([aria-hidden="true"]):not([tabindex="-1"]):focus,
+.webnova-contact-form .wpforms-field select:not([aria-hidden="true"]):not([tabindex="-1"]):focus,
+.webnova-contact-form .wpforms-field textarea:not([aria-hidden="true"]):not([tabindex="-1"]):focus {
+  border-color: var(--webnova-orange);
+  outline: 2px solid rgb(var(--wn-color-accent-rgb) / 0.18);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgb(var(--wn-color-accent-rgb) / 0.1);
+}
+
+.webnova-contact-form .wpforms-field-description {
+  margin-top: 7px;
+  color: var(--webnova-contact-muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.webnova-contact-form .webnova-field-name,
+.webnova-contact-form .webnova-field-phone,
+.webnova-contact-form .webnova-field-email,
+.webnova-contact-form .webnova-field-message {
+  --webnova-field-icon: none;
+}
+
+.webnova-contact-form .webnova-field-name {
+  --webnova-field-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 21a8 8 0 0 0-16 0'/%3E%3Ccircle cx='12' cy='7' r='4'/%3E%3C/svg%3E");
+}
+
+.webnova-contact-form .webnova-field-phone {
+  --webnova-field-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.6a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.48-1.19a2 2 0 0 1 2.11-.45c.83.29 1.7.5 2.6.62A2 2 0 0 1 22 16.92Z'/%3E%3C/svg%3E");
+}
+
+.webnova-contact-form .webnova-field-email {
+  --webnova-field-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='5' width='18' height='14' rx='2'/%3E%3Cpath d='m3 7 9 6 9-6'/%3E%3C/svg%3E");
+}
+
+.webnova-contact-form .webnova-field-message {
+  --webnova-field-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4Z'/%3E%3C/svg%3E");
+}
+
+.webnova-contact-form .webnova-field-name::after,
+.webnova-contact-form .webnova-field-phone::after,
+.webnova-contact-form .webnova-field-email::after,
+.webnova-contact-form .webnova-field-message::after {
+  position: absolute;
+  top: calc(1.3em + 20px);
+  left: 15px;
+  width: 18px;
+  height: 18px;
+  content: "";
+  background: var(--webnova-contact-muted);
+  -webkit-mask: var(--webnova-field-icon) center / contain no-repeat;
+  mask: var(--webnova-field-icon) center / contain no-repeat;
+  pointer-events: none;
+}
+
+.webnova-contact-form .webnova-field-name input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form .webnova-field-phone input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form .webnova-field-email input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form .webnova-field-message textarea:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  padding-left: 45px;
+}
+
+.webnova-contact-form .webnova-field-message::after {
+  top: calc(1.3em + 22px);
+}
+
+.webnova-contact-form .wpforms-submit-container {
+  margin-top: 22px;
+  padding: 0;
+}
+
+.webnova-contact-form button[type="submit"],
+.webnova-contact-form .wpforms-submit,
+.webnova-contact-form .wpforms-page-button {
+  display: inline-flex;
+  width: 100%;
+  min-height: 54px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border: 0;
+  border-radius: 8px;
+  color: var(--webnova-white);
+  font-size: 1rem;
+  font-weight: 850;
+  line-height: 1;
+  text-decoration: none;
+  background: var(--webnova-orange);
+  box-shadow: 0 16px 34px rgb(var(--wn-color-accent-rgb) / 0.25);
+  cursor: pointer;
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.webnova-contact-form button[type="submit"]:hover,
+.webnova-contact-form button[type="submit"]:focus,
+.webnova-contact-form .wpforms-submit:hover,
+.webnova-contact-form .wpforms-submit:focus,
+.webnova-contact-form .wpforms-page-button:hover,
+.webnova-contact-form .wpforms-page-button:focus {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--webnova-orange) 88%, #000000);
+  box-shadow: 0 20px 42px rgb(var(--wn-color-accent-rgb) / 0.32);
+}
+
+.webnova-contact-form .wpforms-error,
+.webnova-contact-form label.wpforms-error,
+.webnova-contact-form .wpforms-field-required,
+.webnova-contact-form em.wpforms-error {
+  display: block;
+  margin-top: 7px;
+  color: #B42318;
+  font-size: 0.86rem;
+  font-weight: 750;
+  line-height: 1.35;
+}
+
+.webnova-contact-form .wpforms-field input.wpforms-error:not([type="hidden"]),
+.webnova-contact-form .wpforms-field textarea.wpforms-error,
+.webnova-contact-form .wpforms-field select.wpforms-error {
+  border-color: #D92D20;
+  box-shadow: 0 0 0 3px rgb(217 45 32 / 0.1);
+}
+
+.webnova-contact-form div.wpforms-container-full {
+  --wpforms-field-size-input-height: 58px;
+  --wpforms-field-size-input-spacing: 18px;
+  --wpforms-field-border-color: var(--webnova-contact-border);
+  --wpforms-field-border-radius: 8px;
+  --wpforms-button-background-color: var(--webnova-orange);
+  --wpforms-button-text-color: var(--webnova-white);
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form {
+  width: 100% !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field-container {
+  display: grid !important;
+  gap: 22px !important;
+  width: 100% !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field {
+  position: relative !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field:not([aria-hidden="true"]) {
+  border-radius: 8px;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field-label {
+  display: flex !important;
+  gap: 4px;
+  align-items: baseline;
+  margin: 0 0 9px !important;
+  color: var(--webnova-blue) !important;
+  font-size: 0.95rem !important;
+  font-weight: 900 !important;
+  line-height: 1.25 !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field input.wpforms-field-small,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field input.wpforms-field-medium,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field input.wpforms-field-large,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field select.wpforms-field-small,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field select.wpforms-field-medium,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field select.wpforms-field-large,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea.wpforms-field-small,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea.wpforms-field-medium,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea.wpforms-field-large {
+  max-width: 100% !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field select:not([aria-hidden="true"]):not([tabindex="-1"]),
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-height: 58px !important;
+  padding: 15px 17px !important;
+  border: 1px solid rgb(var(--wn-color-primary-rgb) / 0.14) !important;
+  border-radius: 8px !important;
+  color: var(--webnova-contact-text) !important;
+  font-size: 1rem !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  background:
+    linear-gradient(180deg, var(--webnova-white), #FBFCFE) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(var(--wn-color-white-rgb) / 0.82),
+    0 10px 24px rgb(var(--wn-color-primary-rgb) / 0.06) !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field input:not([type="hidden"])::placeholder,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea::placeholder {
+  color: color-mix(in srgb, var(--webnova-contact-muted) 74%, var(--webnova-white)) !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  min-height: 150px !important;
+  padding-top: 16px !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field select:not([aria-hidden="true"]):not([tabindex="-1"]) {
+  padding-right: 46px !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field input:not([type="hidden"]):not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="file"]):not([aria-hidden="true"]):not([tabindex="-1"]):focus,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field select:not([aria-hidden="true"]):not([tabindex="-1"]):focus,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-field textarea:not([aria-hidden="true"]):not([tabindex="-1"]):focus {
+  border-color: var(--webnova-orange) !important;
+  outline: 2px solid rgb(var(--wn-color-accent-rgb) / 0.18) !important;
+  outline-offset: 2px !important;
+  background: var(--webnova-white) !important;
+  box-shadow:
+    0 0 0 5px rgb(var(--wn-color-accent-rgb) / 0.11),
+    0 16px 34px rgb(var(--wn-color-primary-rgb) / 0.09) !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-submit-container {
+  margin-top: 26px !important;
+  padding: 0 !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form button[type="submit"],
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-submit {
+  width: 100% !important;
+  min-height: 58px !important;
+  padding: 16px 24px !important;
+  border: 0 !important;
+  border-radius: 8px !important;
+  color: var(--webnova-white) !important;
+  font-size: 1rem !important;
+  font-weight: 900 !important;
+  line-height: 1 !important;
+  text-transform: none !important;
+  background:
+    linear-gradient(135deg, var(--webnova-orange), color-mix(in srgb, var(--webnova-orange) 82%, #B42318)) !important;
+  box-shadow: 0 18px 36px rgb(var(--wn-color-accent-rgb) / 0.28) !important;
+}
+
+.webnova-contact-form div.wpforms-container-full .wpforms-form button[type="submit"]:hover,
+.webnova-contact-form div.wpforms-container-full .wpforms-form button[type="submit"]:focus,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-submit:hover,
+.webnova-contact-form div.wpforms-container-full .wpforms-form .wpforms-submit:focus {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(135deg, color-mix(in srgb, var(--webnova-orange) 90%, #FFFFFF), var(--webnova-orange)) !important;
+  box-shadow: 0 22px 44px rgb(var(--wn-color-accent-rgb) / 0.34) !important;
+}
+
+.webnova-contact-form .wpforms-confirmation-container-full,
+.webnova-contact-form .wpforms-confirmation-container {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--wn-color-success, #2E7D32);
+  border-radius: 8px;
+  color: var(--wn-color-success, #2E7D32);
+  background: var(--wn-color-success-light, #DDF8EA);
+}
+
+.webnova-contact-info {
+  display: grid;
+  gap: clamp(18px, 2.4vw, 26px);
+}
+
+.webnova-contact-info > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.webnova-contact-eyebrow {
+  width: fit-content;
+  color: var(--webnova-orange);
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.webnova-contact-title {
+  max-width: 920px;
+  color: var(--webnova-blue);
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  font-weight: 950;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+.webnova-contact-text {
+  max-width: none;
+  color: var(--webnova-contact-text);
+  font-size: clamp(1rem, 1.25vw, 1.12rem);
+  line-height: 1.68;
+}
+
+.webnova-contact-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.webnova-contact-item {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+  gap: 13px;
+  align-items: start;
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgb(var(--wn-color-primary-rgb) / 0.08);
+  border-radius: 8px;
+  background: rgb(var(--wn-color-white-rgb) / 0.78);
+  box-shadow: 0 12px 32px rgb(var(--wn-color-primary-rgb) / 0.07);
+}
+
+.webnova-contact-item:not(:has(.webnova-contact-icon)) {
+  grid-template-columns: 1fr;
+}
+
+.webnova-contact-icon {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  place-items: center;
+  color: var(--webnova-white);
+  background: var(--webnova-blue);
+}
+
+.webnova-contact-icon svg {
+  display: block;
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentcolor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.9;
+}
+
+.webnova-contact-item-content > * {
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.webnova-contact-item-title {
+  color: var(--webnova-blue);
+  font-size: 0.98rem;
+  font-weight: 900;
+  line-height: 1.25;
+}
+
+.webnova-contact-item-text {
+  margin-top: 4px;
+  color: var(--webnova-contact-text);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.webnova-contact-image {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 20px 52px rgb(var(--wn-color-primary-rgb) / 0.13);
+}
+
+.webnova-contact-image img {
+  display: block;
+  width: 100%;
+  height: clamp(220px, 22vw, 320px);
+  object-fit: cover;
+}
+
+.webnova-contact-bottom {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: end;
+}
+
+.webnova-contact-map {
+  position: relative;
+  display: grid;
+  min-height: 150px;
+  overflow: hidden;
+  border: 1px solid rgb(var(--wn-color-primary-rgb) / 0.08);
+  border-radius: 8px;
+  place-items: center;
+  color: var(--webnova-blue);
+  background:
+    linear-gradient(34deg, transparent 0 36%, rgb(var(--wn-color-primary-rgb) / 0.07) 36% 38%, transparent 38% 100%),
+    linear-gradient(126deg, transparent 0 42%, rgb(var(--wn-color-primary-rgb) / 0.08) 42% 44%, transparent 44% 100%),
+    repeating-linear-gradient(0deg, rgb(var(--wn-color-primary-rgb) / 0.04) 0 1px, transparent 1px 34px),
+    repeating-linear-gradient(90deg, rgb(var(--wn-color-primary-rgb) / 0.04) 0 1px, transparent 1px 42px),
+    var(--webnova-white);
+  box-shadow: 0 16px 38px rgb(var(--wn-color-primary-rgb) / 0.1);
+}
+
+.webnova-contact-map::before {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  border-radius: 999px 999px 999px 6px;
+  content: "";
+  place-items: center;
+  background: var(--webnova-orange);
+  box-shadow: 0 12px 24px rgb(var(--wn-color-accent-rgb) / 0.28);
+  transform: rotate(45deg);
+}
+
+.webnova-contact-map::after {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  content: "";
+  background: var(--webnova-white);
+}
+
+.webnova-contact-map iframe {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.webnova-contact-map p {
+  position: absolute;
+  z-index: 2;
+  right: 14px;
+  bottom: 12px;
+  max-width: calc(100% - 28px);
+  margin: 0;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: var(--webnova-blue);
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.2;
+  background: rgb(var(--wn-color-white-rgb) / 0.9);
+  box-shadow: 0 8px 22px rgb(var(--wn-color-primary-rgb) / 0.1);
+}
+
+.webnova-contact-actions {
+  justify-content: flex-end;
+}
+
+.webnova-contact-button .wp-block-button__link {
+  display: inline-flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  border-radius: 8px;
+  color: var(--webnova-white);
+  font-weight: 850;
+  line-height: 1;
+  background: var(--webnova-blue);
+  box-shadow: 0 16px 34px rgb(var(--wn-color-primary-rgb) / 0.22);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.webnova-contact-button .wp-block-button__link::after {
+  margin-left: 10px;
+  content: "\2192";
+}
+
+.webnova-contact-button .wp-block-button__link:hover,
+.webnova-contact-button .wp-block-button__link:focus {
+  transform: translateY(-1px);
+  background: color-mix(in srgb, var(--webnova-blue) 88%, var(--webnova-orange));
+  box-shadow: 0 20px 44px rgb(var(--wn-color-primary-rgb) / 0.28);
+}
+
+@media (min-width: 1024px) {
+  .wn-pattern-benefits--with-separators .wn-pattern-benefits__grid {
+    gap: 28px;
+  }
+
+  .wn-pattern-benefits--with-separators:not(.wn-pattern-benefits--no-separators) .wn-pattern-benefits__card:not(:first-child)::before {
+    position: absolute;
+    top: 34px;
+    bottom: 34px;
+    left: -15px;
+    width: 2px;
+    border-radius: 999px;
+    content: "";
+    background: rgb(var(--wn-color-accent-rgb) / 0.36);
+  }
+}
+
+@media (max-width: 1180px) {
+  .webnova-cta-whatsapp__inner {
+    grid-template-columns: minmax(118px, 0.6fr) auto minmax(0, 2fr);
+  }
+
+  .webnova-cta-whatsapp__features {
+    grid-column: 3;
+    grid-template-columns: repeat(4, minmax(74px, 1fr));
+    width: 100%;
+  }
+
+  .webnova-cta-whatsapp__content + .webnova-cta-whatsapp__divider {
+    display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .wn-section.wn-hero--business,
+  .wp-block-group.alignfull.wn-section.wn-hero--business {
+    padding-block-start: 8px !important;
+    padding-block-end: 28px !important;
+  }
+
+  .wn-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .wn-hero__title,
+  .wn-hero__subtitle {
+    font-size: 3.2rem;
+  }
+
+  .wn-hero__image img {
+    max-height: none;
+  }
+
+  .webnova-services-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  }
+
+  .webnova-pricing-header {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .webnova-pricing-description {
+    max-width: 720px;
+    margin-top: 0;
+  }
+
+  .webnova-pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .webnova-contact-container {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .webnova-contact-info {
+    gap: 22px;
+  }
+
+  .webnova-contact-title,
+  .webnova-contact-text {
+    max-width: none;
+  }
+
+  .webnova-pricing-card-title,
+  .webnova-pricing-audience {
+    min-height: 0;
+  }
+
+  .webnova-cta-highlight {
+    padding: 24px;
+  }
+
+  .webnova-cta-inner {
+    gap: 22px;
+  }
+
+  .webnova-cta-media {
+    flex-basis: 36%;
+    min-width: 220px;
+  }
+
+  .webnova-cta-features {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .webnova-cta-feature-item:not(:first-child) {
+    padding-top: 14px;
+    padding-left: 0;
+    border-top: 1px solid #F1DDD5;
+    border-left: 0;
+  }
+
+  .webnova-cta-whatsapp__inner {
+    grid-template-columns: minmax(112px, 0.44fr) auto minmax(0, 1fr);
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .webnova-cta-whatsapp__features {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(4, minmax(78px, 1fr));
+  }
+
+  .webnova-cta-whatsapp__title {
+    font-size: clamp(1.45rem, 4vw, 2.35rem);
+  }
+
+  .webnova-cta-whatsapp__subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .wn-container {
+    width: min(100% - 32px, var(--wn-container));
+  }
+
+  .wn-section.wn-hero--business,
+  .wp-block-group.alignfull.wn-section.wn-hero--business {
+    padding-block-start: 8px !important;
+    padding-block-end: 24px !important;
+  }
+
+  .wn-hero__title,
+  .wn-hero__subtitle {
+    font-size: 2.35rem;
+  }
+
+  .wn-hero__text {
+    font-size: 1.05rem;
+  }
+
+  .wn-business-card__title {
+    font-size: 1.65rem;
+  }
+
+  .wn-hero__actions .wp-block-button,
+  .wn-hero__actions .wp-block-button__link {
+    width: 100%;
+  }
+
+  .wn-business-card {
+    padding: 22px;
+  }
+
+  .wn-business-card__top,
+  .wn-business-card__metrics {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .wn-hero__floating-card {
+    position: static;
+    width: 100%;
+    margin-top: 16px;
+  }
+
+  .wn-pattern-benefits {
+    padding: 24px 0;
+  }
+
+  .wn-pattern-benefits__title {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .wn-pattern-benefits__title::before,
+  .wn-pattern-benefits__title::after {
+    width: min(96px, 42%);
+    margin: 0 auto;
+  }
+
+  .wn-pattern-benefits__grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .webnova-services-section {
+    padding: 24px 0;
+  }
+
+  .webnova-services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .webnova-pricing-section {
+    padding: 24px 0;
+  }
+
+  .webnova-pricing-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .webnova-pricing-card {
+    padding: 30px 20px 20px;
+  }
+
+  .webnova-pricing-title {
+    font-size: 2.35rem;
+  }
+
+  .webnova-pricing-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .webnova-service-image img {
+    height: 100%;
+  }
+
+  .webnova-service-body {
+    padding: 28px 22px 30px;
+  }
+
+  .webnova-service-heading-row {
+    grid-template-columns: 62px minmax(0, 1fr);
+    gap: 15px;
+  }
+
+  .webnova-service-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .webnova-service-icon::after {
+    right: -11px;
+    height: 48px;
+  }
+
+  .webnova-service-icon svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .webnova-service-actions .wp-block-button,
+  .webnova-service-actions .wp-block-button__link {
+    width: 100%;
+  }
+
+  .webnova-contact-section {
+    padding: 24px 0;
+  }
+
+  .webnova-contact-list {
+    grid-template-columns: 1fr;
+  }
+
+  .webnova-contact-item {
+    padding: 14px;
+  }
+
+  .webnova-contact-bottom {
+    grid-template-columns: 1fr;
+  }
+
+  .webnova-contact-map {
+    min-height: 138px;
+  }
+
+  .webnova-contact-actions,
+  .webnova-contact-actions .wp-block-button,
+  .webnova-contact-actions .wp-block-button__link,
+  .webnova-contact-button .wp-block-button__link {
+    width: 100%;
+  }
+
+  .webnova-contact-actions {
+    justify-content: stretch;
+  }
+
+  .webnova-cta-section--highlight {
+    padding: 8px 0;
+  }
+
+  .webnova-cta-highlight {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .webnova-cta-inner {
+    flex-direction: column;
+  }
+
+  .webnova-cta-media {
+    flex-basis: auto;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .webnova-cta-image-placeholder {
+    min-height: 170px;
+  }
+
+  .webnova-cta-divider {
+    width: 100%;
+    min-height: 0;
+    height: 2px !important;
+  }
+
+  .webnova-cta-content {
+    flex-basis: auto;
+    text-align: center;
+  }
+
+  .webnova-cta-badge {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .webnova-cta-title {
+    font-size: 2rem;
+  }
+
+  .webnova-cta-subtitle {
+    font-size: 1.45rem;
+  }
+
+  .webnova-cta-actions,
+  .webnova-cta-actions .wp-block-button,
+  .webnova-cta-actions .wp-block-button__link {
+    width: 100%;
+  }
+
+  .webnova-cta-actions {
+    justify-content: center;
+  }
+
+  .webnova-cta-secondary .wp-block-button__link {
+    width: fit-content;
+    margin: 0 auto;
+  }
+
+  .webnova-cta-feature-item {
+    text-align: left;
+  }
+
+  .webnova-cta-whatsapp {
+    padding: 8px 0;
+  }
+
+  .webnova-cta-whatsapp__inner {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px 16px 24px;
+  }
+
+  .webnova-cta-whatsapp__left,
+  .webnova-cta-whatsapp__content {
+    text-align: center;
+  }
+
+  .webnova-cta-whatsapp__icon-link {
+    width: 92px;
+  }
+
+  .webnova-cta-whatsapp__click {
+    width: min(100%, 220px);
+    margin-inline: auto;
+  }
+
+  .webnova-cta-whatsapp__divider {
+    width: min(160px, 70%);
+    min-height: 0;
+    height: 2px !important;
+    margin-inline: auto !important;
+  }
+
+  .webnova-cta-whatsapp__content + .webnova-cta-whatsapp__divider {
+    display: block;
+  }
+
+  .webnova-cta-whatsapp__features {
+    grid-column: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    padding: 14px;
+  }
+
+  .webnova-cta-whatsapp__feature {
+    gap: 6px;
+  }
+
+  .webnova-cta-whatsapp__phone {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 2px;
+    font-size: 1.18rem;
+  }
+
+  .webnova-cta-whatsapp__phone::before,
+  .webnova-cta-whatsapp__phone::after {
+    width: min(180px, 70%);
+    margin-inline: auto;
+  }
+}
