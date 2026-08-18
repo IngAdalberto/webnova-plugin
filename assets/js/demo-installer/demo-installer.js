@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const btnInstall = document.getElementById('webnova-btn-install');
-    const btnUninstall = document.getElementById('webnova-btn-uninstall');
+    const installButtons = document.querySelectorAll('.webnova-btn-install');
     const logBox = document.getElementById('webnova-installer-log');
+    const uiContainer = document.getElementById('webnova-installer-ui');
     
-    if (!btnInstall) return;
+    if (installButtons.length === 0) return;
+
+    let currentTemplateId = null;
 
     const steps = [
         { id: 'validate', action: 'webnova_installer_validate' },
@@ -30,10 +32,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    function toggleButtons(disabled) {
+        installButtons.forEach(btn => btn.disabled = disabled);
+    }
+
     async function runStep(stepIndex) {
         if (stepIndex >= steps.length) {
             logMessage('Instalación completada con éxito.', 'success');
-            btnInstall.disabled = false;
+            toggleButtons(false);
             return;
         }
 
@@ -44,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const formData = new FormData();
             formData.append('action', step.action);
+            formData.append('template_id', currentTemplateId);
             formData.append('_ajax_nonce', webnovaInstallerSettings.nonce);
 
             const response = await fetch(webnovaInstallerSettings.ajax_url, {
@@ -70,58 +77,34 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 logMessage(`Error en paso ${step.id}: ${data.data || webnovaInstallerSettings.texts.error_generic}`, 'error');
                 setStepStatus(step.id, 'failed');
-                btnInstall.disabled = false;
+                toggleButtons(false);
             }
 
         } catch (error) {
             logMessage(`Error de red en paso ${step.id}: ${error.message}`, 'error');
             setStepStatus(step.id, 'failed');
-            btnInstall.disabled = false;
+            toggleButtons(false);
         }
     }
 
-    btnInstall.addEventListener('click', () => {
-        btnInstall.disabled = true;
-        logBox.innerHTML = '';
-        
-        document.querySelectorAll('#webnova-installer-steps li').forEach(el => {
-            el.className = 'pending';
-        });
-
-        logMessage('Iniciando proceso de instalación...');
-        runStep(0);
-    });
-
-    btnUninstall.addEventListener('click', async () => {
-        if (!confirm(webnovaInstallerSettings.texts.confirm_uninstall)) {
-            return;
-        }
-
-        btnUninstall.disabled = true;
-        logBox.innerHTML = '';
-        logMessage('Iniciando desinstalación...');
-
-        try {
-            const formData = new FormData();
-            formData.append('action', 'webnova_installer_uninstall');
-            formData.append('_ajax_nonce', webnovaInstallerSettings.nonce);
-
-            const response = await fetch(webnovaInstallerSettings.ajax_url, {
-                method: 'POST',
-                body: formData
+    installButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentTemplateId = btn.dataset.templateId;
+            toggleButtons(true);
+            logBox.innerHTML = '';
+            
+            if (uiContainer) {
+                uiContainer.style.display = 'block';
+                // Scroll suave al contenedor de UI
+                uiContainer.scrollIntoView({ behavior: 'smooth' });
+            }
+            
+            document.querySelectorAll('#webnova-installer-steps li').forEach(el => {
+                el.className = 'pending';
             });
 
-            const data = await response.json();
-
-            if (data.success) {
-                logMessage(`Desinstalación completada: ${data.data.message}`, 'success');
-            } else {
-                logMessage(`Error en desinstalación: ${data.data || webnovaInstallerSettings.texts.error_generic}`, 'error');
-            }
-        } catch (error) {
-            logMessage(`Error de red: ${error.message}`, 'error');
-        } finally {
-            btnUninstall.disabled = false;
-        }
+            logMessage(`Iniciando proceso de instalación para la plantilla: ${currentTemplateId}...`);
+            runStep(0);
+        });
     });
 });

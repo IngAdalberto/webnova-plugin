@@ -62,6 +62,32 @@ class WebNova_Starter_Kit_Admin_Page
             [],
             WEBNOVA_STARTER_KIT_VERSION
         );
+
+        if ($hook === 'toplevel_page_webnova-starter-kit') {
+            wp_enqueue_style(
+                'webnova-demo-installer',
+                WEBNOVA_STARTER_KIT_URL . 'assets/css/demo-installer/demo-installer.css',
+                [],
+                WEBNOVA_STARTER_KIT_VERSION
+            );
+
+            wp_enqueue_script(
+                'webnova-demo-installer',
+                WEBNOVA_STARTER_KIT_URL . 'assets/js/demo-installer/demo-installer.js',
+                ['jquery'],
+                WEBNOVA_STARTER_KIT_VERSION,
+                true
+            );
+
+            wp_localize_script('webnova-demo-installer', 'webnovaInstallerSettings', [
+                'ajax_url' => admin_url('admin-ajax.php'),
+                'nonce'    => wp_create_nonce('webnova_demo_installer_action'),
+                'texts'    => [
+                    'confirm_uninstall' => __('¿Estás seguro de que deseas desinstalar el contenido demo? Esto moverá los elementos a la papelera o los eliminará permanentemente.', 'webnova-starter-kit'),
+                    'error_generic'     => __('Ocurrió un error inesperado de red o servidor.', 'webnova-starter-kit'),
+                ]
+            ]);
+        }
     }
 
     public function handle_import(): void
@@ -185,20 +211,36 @@ class WebNova_Starter_Kit_Admin_Page
                         <dt><?php esc_html_e('Version', 'webnova-starter-kit'); ?></dt>
                         <dd><?php echo esc_html((string) ($template['version'] ?? '')); ?></dd>
                     </dl>
-                    <form method="post" action="<?php echo esc_url(admin_url('admin-post.php')); ?>">
-                        <?php wp_nonce_field('webnova_import_template'); ?>
-                        <input type="hidden" name="action" value="webnova_import_template" />
-                        <input type="hidden" name="template_id" value="<?php echo esc_attr((string) $template['id']); ?>" />
-                        <div class="webnova-import-option">
-                            <label>
-                                <input type="checkbox" name="update_existing_pages" value="1" />
-                                <?php esc_html_e('Sobrescribir paginas existentes', 'webnova-starter-kit'); ?>
-                            </label>
-                        </div>
-                        <?php submit_button(__('Importar plantilla', 'webnova-starter-kit'), 'primary', 'submit', false); ?>
-                    </form>
+                    <div class="webnova-installer-actions" style="margin-top: 15px;">
+                        <button type="button" class="button button-primary webnova-btn-install" data-template-id="<?php echo esc_attr((string) $template['id']); ?>">
+                            <?php esc_html_e('Ejecutar Instalación', 'webnova-starter-kit'); ?>
+                        </button>
+                    </div>
                 </section>
             <?php endforeach; ?>
+        </div>
+
+        <div id="webnova-installer-ui" style="display:none; margin-top: 2rem;">
+            <div class="webnova-installer-container">
+                <div class="webnova-installer-sidebar">
+                    <h3><?php esc_html_e('Progreso', 'webnova-starter-kit'); ?></h3>
+                    <ul id="webnova-installer-steps">
+                        <li data-step="validate" class="pending"><?php esc_html_e('1. Validación previa', 'webnova-starter-kit'); ?></li>
+                        <li data-step="media" class="pending"><?php esc_html_e('2. Importación de medios', 'webnova-starter-kit'); ?></li>
+                        <li data-step="terms" class="pending"><?php esc_html_e('3. Creación de términos', 'webnova-starter-kit'); ?></li>
+                        <li data-step="content" class="pending"><?php esc_html_e('4. Creación de contenidos', 'webnova-starter-kit'); ?></li>
+                        <li data-step="menus" class="pending"><?php esc_html_e('5. Creación de menús', 'webnova-starter-kit'); ?></li>
+                        <li data-step="settings" class="pending"><?php esc_html_e('6. Aplicación de opciones', 'webnova-starter-kit'); ?></li>
+                        <li data-step="finalize" class="pending"><?php esc_html_e('7. Finalización', 'webnova-starter-kit'); ?></li>
+                    </ul>
+                </div>
+                <div class="webnova-installer-main">
+                    <h3><?php esc_html_e('Registro de Actividad', 'webnova-starter-kit'); ?></h3>
+                    <div id="webnova-installer-log" class="webnova-installer-log">
+                        <p class="log-info"><?php esc_html_e('Esperando acción...', 'webnova-starter-kit'); ?></p>
+                    </div>
+                </div>
+            </div>
         </div>
         <?php
     }

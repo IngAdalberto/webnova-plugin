@@ -11,6 +11,7 @@ if (! defined('ABSPATH')) {
 
 class WebNova_Demo_Installer_Ajax
 {
+    private WebNova_Starter_Kit_Template_Registry $registry;
     private $state_manager;
     private $validator;
     private $media_importer;
@@ -21,6 +22,7 @@ class WebNova_Demo_Installer_Ajax
     private $uninstall_manager;
 
     public function __construct(
+        WebNova_Starter_Kit_Template_Registry $registry,
         $state_manager,
         $validator,
         $media_importer,
@@ -30,6 +32,7 @@ class WebNova_Demo_Installer_Ajax
         $settings_importer,
         $uninstall_manager
     ) {
+        $this->registry          = $registry;
         $this->state_manager     = $state_manager;
         $this->validator         = $validator;
         $this->media_importer    = $media_importer;
@@ -63,9 +66,31 @@ class WebNova_Demo_Installer_Ajax
         }
     }
 
+    private function set_manifest_from_request(): void
+    {
+        $template_id = sanitize_key((string) ($_POST['template_id'] ?? ''));
+
+        if (empty($template_id)) {
+            wp_send_json_error(__('ID de plantilla no proporcionado.', 'webnova-starter-kit'));
+        }
+
+        $template = $this->registry->get_template($template_id);
+
+        if (is_wp_error($template)) {
+            wp_send_json_error($template->get_error_message());
+        }
+
+        if (empty($template['manifest_file'])) {
+            wp_send_json_error(__('Archivo manifest no encontrado para esta plantilla.', 'webnova-starter-kit'));
+        }
+
+        $this->validator->set_manifest_path($template['manifest_file']);
+    }
+
     public function handle_validate(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         $result = $this->validator->validate();
         
@@ -81,6 +106,7 @@ class WebNova_Demo_Installer_Ajax
     public function handle_media(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         $result = $this->media_importer->import();
         
@@ -94,6 +120,7 @@ class WebNova_Demo_Installer_Ajax
     public function handle_terms(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         $result = $this->term_importer->import();
         
@@ -107,6 +134,7 @@ class WebNova_Demo_Installer_Ajax
     public function handle_content(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         $result = $this->content_importer->import();
         
@@ -120,6 +148,7 @@ class WebNova_Demo_Installer_Ajax
     public function handle_menus(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         $result = $this->menu_importer->import();
         
@@ -133,6 +162,7 @@ class WebNova_Demo_Installer_Ajax
     public function handle_settings(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         $result = $this->settings_importer->import();
         
@@ -146,6 +176,7 @@ class WebNova_Demo_Installer_Ajax
     public function handle_finalize(): void
     {
         $this->verify_request();
+        $this->set_manifest_from_request();
         
         flush_rewrite_rules();
         $this->state_manager->mark_completed();
