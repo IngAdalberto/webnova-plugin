@@ -82,7 +82,7 @@ add_action('plugins_loaded', function (): void {
     $pattern_registry = new WebNova_Pattern_Registry($pattern_library);
     $pattern_registry->hooks();
 
-    $registry = new WebNova_Starter_Kit_Template_Registry(ABSPATH . '../demo/manifests/');
+    $registry = new WebNova_Starter_Kit_Template_Registry(WEBNOVA_CORE_PATH . 'demo/manifests/');
     $importer = new WebNova_Starter_Kit_Template_Importer($registry, $pattern_library);
     $admin_page = new WebNova_Starter_Kit_Admin_Page($registry, $importer);
     $admin_page->hooks();
@@ -93,7 +93,7 @@ add_action('plugins_loaded', function (): void {
     // Init Demo Installer
     $demo_state = new WebNova_Demo_State_Manager();
     // Path inicial por defecto, será sobreescrito por la solicitud AJAX
-    $demo_manifest_path = ABSPATH . '../demo/manifests/institutional.json';
+    $demo_manifest_path = WEBNOVA_CORE_PATH . 'demo/manifests/institutional.json';
     
     $demo_validator = new WebNova_Demo_Installer_Validator($demo_manifest_path);
     $demo_media = new WebNova_Demo_Media_Importer($demo_validator, $demo_state);

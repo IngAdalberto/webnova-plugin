@@ -1,0 +1,104 @@
+{
+  "id": "institutional",
+  "name": "Institucional",
+  "description": "Estructura preparada para organizaciones, fundaciones e instituciones.",
+  "version": "1.0.0",
+  "type": "institutional",
+  "author": "WebNova",
+  "status": "stable",
+  "images": [
+    {
+      "id": "hero-institucional",
+      "demo": "institutional",
+      "use": "hero",
+      "aspect_ratio": "16:9",
+      "dimensions": "1920x1080",
+      "max_weight_kb": 350,
+      "type": "fallback",
+      "search_query": "comunidad trabajo social organizacion sin fines de lucro",
+      "alt": "Trabajo comunitario",
+      "local_file": "demo/media/institutional/hero-institucional.jpg"
+    }
+  ],
+  "layout": {
+    "pages": [
+      {
+        "title": "Inicio",
+        "slug": "inicio",
+        "status": "publish",
+        "is_front_page": true,
+        "sections": [
+          "webnova/institutional-home-complete"
+        ]
+      },
+      {
+        "title": "Nosotros",
+        "slug": "nosotros",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-about-page"
+        ]
+      },
+      {
+        "title": "Programas",
+        "slug": "programas",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-programs-page"
+        ]
+      },
+      {
+        "title": "Proyectos",
+        "slug": "proyectos",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-projects-page"
+        ]
+      },
+      {
+        "title": "Noticias",
+        "slug": "noticias",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-news-page"
+        ]
+      },
+      {
+        "title": "Transparencia",
+        "slug": "transparencia",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-transparency-page"
+        ]
+      },
+      {
+        "title": "Contacto",
+        "slug": "contacto",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-contact-page"
+        ]
+      }
+    ]
+  },
+  "menus": [
+    {
+      "location": "primary",
+      "name": "Menú Principal",
+      "items": [
+        { "title": "Inicio", "url": "/" },
+        { "title": "Nosotros", "url": "/nosotros/" },
+        { "title": "Programas", "url": "/programas/" },
+        { "title": "Proyectos", "url": "/proyectos/" },
+        { "title": "Noticias", "url": "/noticias/" },
+        { "title": "Transparencia", "url": "/transparencia/" },
+        { "title": "Contacto", "url": "/contacto/" }
+      ]
+    }
+  ],
+  "settings": {
+    "show_on_front": "page",
+    "page_on_front": "inicio",
+    "page_for_posts": "noticias"
+  }
+}

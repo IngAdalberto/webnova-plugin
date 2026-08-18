@@ -1,0 +1,61 @@
+{
+  "id": "landing-professional",
+  "name": "Landing Profesional",
+  "description": "Plantilla comercial para clientes finales que requieren una presencia profesional de una sola página.",
+  "version": "1.0.0",
+  "type": "professional",
+  "author": "WebNova",
+  "status": "stable",
+  "images": [
+    {
+      "id": "hero-business",
+      "demo": "landing-professional",
+      "use": "hero",
+      "aspect_ratio": "16:9",
+      "dimensions": "1920x1080",
+      "max_weight_kb": 350,
+      "type": "fallback",
+      "search_query": "business meeting professional modern",
+      "alt": "Reunión de negocios moderna",
+      "local_file": "demo/media/professional/hero-business.jpg"
+    }
+  ],
+  "layout": {
+    "pages": [
+      {
+        "title": "Inicio",
+        "slug": "inicio",
+        "status": "publish",
+        "is_front_page": true,
+        "sections": [
+          "webnova/hero-business-01",
+          "webnova/cards-benefits-3",
+          "webnova/cards-services-3",
+          "webnova/process-steps-4",
+          "webnova/landing-testimonials",
+          "webnova/landing-faq",
+          "webnova/cta-highlight",
+          "webnova/footer-simple-01"
+        ]
+      }
+    ]
+  },
+  "menus": [
+    {
+      "location": "primary",
+      "name": "Menú Principal",
+      "items": [
+        { "title": "Inicio", "url": "#inicio" },
+        { "title": "Beneficios", "url": "#beneficios" },
+        { "title": "Servicios", "url": "#servicios" },
+        { "title": "Proceso", "url": "#proceso" },
+        { "title": "Testimonios", "url": "#testimonios" },
+        { "title": "FAQ", "url": "#faq" }
+      ]
+    }
+  ],
+  "settings": {
+    "show_on_front": "page",
+    "page_on_front": "inicio"
+  }
+}

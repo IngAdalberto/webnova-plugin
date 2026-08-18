@@ -1,0 +1,120 @@
+{
+  "id": "school",
+  "name": "Colegio",
+  "description": "Estructura multipágina para instituciones educativas de K-12.",
+  "version": "1.0.0",
+  "type": "school",
+  "author": "WebNova",
+  "status": "stable",
+  "images": [
+    {
+      "id": "hero-colegio",
+      "demo": "school",
+      "use": "hero",
+      "aspect_ratio": "16:9",
+      "dimensions": "1920x1080",
+      "max_weight_kb": 350,
+      "type": "fallback",
+      "search_query": "estudiantes en el aula colegio feliz",
+      "alt": "Estudiantes en el campus",
+      "local_file": "demo/media/school/hero-colegio.jpg"
+    }
+  ],
+  "layout": {
+    "pages": [
+      {
+        "title": "Inicio",
+        "slug": "inicio",
+        "status": "publish",
+        "is_front_page": true,
+        "sections": [
+          "webnova/institutional-home-complete"
+        ]
+      },
+      {
+        "title": "El Colegio",
+        "slug": "el-colegio",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-about-page"
+        ]
+      },
+      {
+        "title": "Proyecto Educativo",
+        "slug": "proyecto-educativo",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-transparency-page"
+        ]
+      },
+      {
+        "title": "Oferta Académica",
+        "slug": "oferta-academica",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-programs-page"
+        ]
+      },
+      {
+        "title": "Admisiones",
+        "slug": "admisiones",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-contact-page"
+        ]
+      },
+      {
+        "title": "Noticias",
+        "slug": "noticias",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-news-page"
+        ]
+      },
+      {
+        "title": "Eventos",
+        "slug": "eventos",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-news-page"
+        ]
+      },
+      {
+        "title": "Documentos Institucionales",
+        "slug": "documentos",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-document-categories",
+          "webnova/institutional-document-list"
+        ]
+      },
+      {
+        "title": "Contacto",
+        "slug": "contacto",
+        "status": "publish",
+        "sections": [
+          "webnova/institutional-contact-page"
+        ]
+      }
+    ]
+  },
+  "menus": [
+    {
+      "location": "primary",
+      "name": "Menú Principal",
+      "items": [
+        { "title": "Inicio", "url": "/" },
+        { "title": "El Colegio", "url": "/el-colegio/" },
+        { "title": "Oferta Académica", "url": "/oferta-academica/" },
+        { "title": "Admisiones", "url": "/admisiones/" },
+        { "title": "Noticias", "url": "/noticias/" },
+        { "title": "Contacto", "url": "/contacto/" }
+      ]
+    }
+  ],
+  "settings": {
+    "show_on_front": "page",
+    "page_on_front": "inicio",
+    "page_for_posts": "noticias"
+  }
+}

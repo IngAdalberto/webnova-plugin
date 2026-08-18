@@ -38,13 +38,13 @@ class WebNova_Demo_Media_Importer
 
         foreach ($media as $item) {
             $filename = sanitize_file_name(basename($item['local_file']));
-            $file_path = wp_normalize_path(ABSPATH . '../' . $item['local_file']);
+            $file_path = wp_normalize_path(WEBNOVA_CORE_PATH . $item['local_file']);
             $count += $this->import_file($filename, $file_path, $item['alt'] ?? '', 'image');
         }
 
         foreach ($documents as $doc) {
             $filename = sanitize_file_name(basename($doc['local_file']));
-            $file_path = wp_normalize_path(ABSPATH . '../' . $doc['local_file']);
+            $file_path = wp_normalize_path(WEBNOVA_CORE_PATH . $doc['local_file']);
             $count += $this->import_file($filename, $file_path, $doc['title'] ?? '', 'document');
         }
 
