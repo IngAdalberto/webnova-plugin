@@ -30,15 +30,30 @@ class WebNova_Starter_Kit_Private_Update_Checker
     public function hooks(): void
     {
         add_filter('pre_set_site_transient_update_plugins', [$this, 'filter_update_transient']);
+        add_filter('site_transient_update_plugins', [$this, 'filter_update_transient']);
         add_filter('plugins_api', [$this, 'filter_plugin_info'], 20, 3);
         add_filter('upgrader_source_selection', [$this, 'fix_github_zip_folder_name'], 10, 3);
     }
 
-    public function filter_update_transient(object $transient): object
+    public function filter_update_transient($transient): object
     {
-        if (empty($transient->checked) || ! isset($transient->checked[$this->plugin_basename])) {
-            return $transient;
+        if (! is_object($transient)) {
+            $transient = (object) [];
         }
+
+        $transient->checked = isset($transient->checked) && is_array($transient->checked)
+            ? $transient->checked
+            : [];
+        $transient->response = isset($transient->response) && is_array($transient->response)
+            ? $transient->response
+            : [];
+        $transient->no_update = isset($transient->no_update) && is_array($transient->no_update)
+            ? $transient->no_update
+            : [];
+
+        $transient->checked[$this->plugin_basename] = $this->version;
+        unset($transient->response[$this->plugin_basename]);
+        unset($transient->no_update[$this->plugin_basename]);
 
         $metadata = $this->get_metadata();
 
@@ -98,22 +113,26 @@ class WebNova_Starter_Kit_Private_Update_Checker
     {
         global $wp_filesystem;
 
+        if (! is_string($source) || ! is_string($remote_source) || ! $wp_filesystem) {
+            return $source;
+        }
+
         $plugin_dir_name = dirname($this->plugin_basename);
         $main_file_name = basename($this->plugin_basename);
+        $source = trailingslashit($source);
 
         if ($wp_filesystem->exists($source . $main_file_name)) {
             $plugin_data = get_file_data($source . $main_file_name, ['Plugin Name' => 'Plugin Name']);
-            
-            if (!empty($plugin_data['Plugin Name']) && stripos($plugin_data['Plugin Name'], 'WebNova') !== false) {
-                
+
+            if (! empty($plugin_data['Plugin Name']) && stripos($plugin_data['Plugin Name'], 'WebNova') !== false) {
                 $corrected_source = trailingslashit($remote_source) . $plugin_dir_name . '/';
 
-                if ($source !== $corrected_source) {
+                if (wp_normalize_path($source) !== wp_normalize_path($corrected_source)) {
                     if ($wp_filesystem->move($source, $corrected_source, true)) {
                         return $corrected_source;
-                    } else {
-                        return new WP_Error('rename_failed', __('No se pudo renombrar la carpeta extraída de GitHub.', 'webnova-starter-kit'));
                     }
+
+                    return new WP_Error('rename_failed', __('No se pudo renombrar la carpeta extraída de GitHub.', 'webnova-starter-kit'));
                 }
             }
         }
@@ -239,13 +258,36 @@ class WebNova_Starter_Kit_Private_Update_Checker
     private function sanitize_metadata(array $metadata): array
     {
         $version = $this->normalize_version((string) $metadata['tag_name']);
-        
         $download_url = $metadata['zipball_url'] ?? '';
+
         if (!empty($metadata['assets']) && is_array($metadata['assets'])) {
+            $zip_assets = [];
+
             foreach ($metadata['assets'] as $asset) {
                 if (isset($asset['name'], $asset['browser_download_url']) && str_ends_with($asset['name'], '.zip')) {
-                    $download_url = $asset['browser_download_url'];
+                    $zip_assets[(string) $asset['name']] = (string) $asset['browser_download_url'];
+                }
+            }
+
+            $preferred_names = [
+                'webnova-starter-kit-' . $version . '.zip',
+                'webnova-plugin-' . $version . '.zip',
+                'webnova-core-' . $version . '.zip',
+            ];
+
+            foreach ($preferred_names as $preferred_name) {
+                if (isset($zip_assets[$preferred_name])) {
+                    $download_url = $zip_assets[$preferred_name];
                     break;
+                }
+            }
+
+            if ($download_url === ($metadata['zipball_url'] ?? '')) {
+                foreach ($zip_assets as $asset_name => $asset_url) {
+                    if (! preg_match('/(?:upgrade|bridge|puente|from-)/i', $asset_name)) {
+                        $download_url = $asset_url;
+                        break;
+                    }
                 }
             }
         }
@@ -259,7 +301,7 @@ class WebNova_Starter_Kit_Private_Update_Checker
             'homepage' => esc_url_raw('https://github.com/' . WEBNOVA_STARTER_KIT_GITHUB_REPO),
             'author' => sanitize_text_field('Agencia WebNova'),
             'requires' => '6.5',
-            'tested' => '6.8',
+            'tested' => '7.0',
             'requires_php' => '8.1',
             'last_updated' => sanitize_text_field((string) ($metadata['published_at'] ?? '')),
             'description' => wp_kses_post((string) ($metadata['body'] ?? 'Actualización desde GitHub.')),
