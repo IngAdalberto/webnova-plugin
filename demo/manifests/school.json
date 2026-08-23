@@ -1,8 +1,8 @@
 {
   "id": "school",
   "name": "Colegio",
-  "description": "Estructura multipágina para instituciones educativas de K-12.",
-  "version": "1.0.0",
+  "description": "Demo multipágina completa para colegios de preescolar a educación media.",
+  "version": "2.1.0",
   "type": "school",
   "author": "WebNova",
   "status": "stable",
@@ -17,7 +17,29 @@
       "type": "fallback",
       "search_query": "estudiantes en el aula colegio feliz",
       "alt": "Estudiantes en el campus",
-      "local_file": "demo/media/school/hero-colegio.jpg"
+      "local_file": "demo/media/school/hero-campus.webp"
+    },
+    {
+      "id": "innovacion-academica",
+      "demo": "school",
+      "use": "content",
+      "aspect_ratio": "3:2",
+      "dimensions": "1536x1024",
+      "max_weight_kb": 200,
+      "type": "generated",
+      "alt": "Estudiantes desarrollando un proyecto de robótica",
+      "local_file": "demo/media/school/academic-innovation.webp"
+    },
+    {
+      "id": "familia-admisiones",
+      "demo": "school",
+      "use": "content",
+      "aspect_ratio": "3:2",
+      "dimensions": "1536x1024",
+      "max_weight_kb": 200,
+      "type": "generated",
+      "alt": "Familia durante una visita de admisiones",
+      "local_file": "demo/media/school/admissions-family.webp"
     }
   ],
   "layout": {
@@ -28,7 +50,7 @@
         "status": "publish",
         "is_front_page": true,
         "sections": [
-          "webnova/institutional-home-complete"
+          "webnova/school-home"
         ]
       },
       {
@@ -36,7 +58,7 @@
         "slug": "el-colegio",
         "status": "publish",
         "sections": [
-          "webnova/institutional-about-page"
+          "webnova/school-about"
         ]
       },
       {
@@ -44,7 +66,7 @@
         "slug": "proyecto-educativo",
         "status": "publish",
         "sections": [
-          "webnova/institutional-transparency-page"
+          "webnova/school-educational-project"
         ]
       },
       {
@@ -52,7 +74,7 @@
         "slug": "oferta-academica",
         "status": "publish",
         "sections": [
-          "webnova/institutional-programs-page"
+          "webnova/school-academics"
         ]
       },
       {
@@ -60,7 +82,7 @@
         "slug": "admisiones",
         "status": "publish",
         "sections": [
-          "webnova/institutional-contact-page"
+          "webnova/school-admissions"
         ]
       },
       {
@@ -68,7 +90,7 @@
         "slug": "noticias",
         "status": "publish",
         "sections": [
-          "webnova/institutional-news-page"
+          "webnova/school-news"
         ]
       },
       {
@@ -76,7 +98,7 @@
         "slug": "eventos",
         "status": "publish",
         "sections": [
-          "webnova/institutional-news-page"
+          "webnova/school-events"
         ]
       },
       {
@@ -84,8 +106,7 @@
         "slug": "documentos",
         "status": "publish",
         "sections": [
-          "webnova/institutional-document-categories",
-          "webnova/institutional-document-list"
+          "webnova/school-documents"
         ]
       },
       {
@@ -93,8 +114,40 @@
         "slug": "contacto",
         "status": "publish",
         "sections": [
-          "webnova/institutional-contact-page"
+          "webnova/school-contact"
         ]
+      }
+    ],
+    "taxonomies": {
+      "category": ["Vida escolar", "Logros", "Eventos"]
+    },
+    "posts": [
+      {
+        "title": "Horizonte celebra su feria de ciencia y creatividad",
+        "slug": "feria-ciencia-creatividad",
+        "status": "publish",
+        "category": "Vida escolar",
+        "thumbnail": "academic-innovation.webp",
+        "excerpt": "Más de 80 proyectos convirtieron preguntas del aula en soluciones para el entorno.",
+        "content": "<!-- wp:paragraph --><p>Durante una jornada abierta a las familias, estudiantes de primaria y bachillerato presentaron proyectos de ciencia, programación, diseño y sostenibilidad.</p><!-- /wp:paragraph --><!-- wp:heading {\"level\":2} --><h2 class=\"wp-block-heading\">Aprender haciendo</h2><!-- /wp:heading --><!-- wp:paragraph --><p>Cada equipo explicó el problema investigado, mostró evidencias de su proceso y recibió preguntas de visitantes y docentes.</p><!-- /wp:paragraph -->"
+      },
+      {
+        "title": "Equipo de debate representará al colegio en la final distrital",
+        "slug": "equipo-debate-final-distrital",
+        "status": "publish",
+        "category": "Logros",
+        "thumbnail": "hero-campus.webp",
+        "excerpt": "Argumentación, escucha y trabajo colaborativo llevaron al equipo de secundaria a la ronda final.",
+        "content": "<!-- wp:paragraph --><p>El equipo de debate de Horizonte clasificó a la final distrital después de una destacada participación en las rondas preliminares.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Felicitamos a los estudiantes y docentes que convirtieron cada encuentro en una oportunidad para aprender a escuchar y construir argumentos respetuosos.</p><!-- /wp:paragraph -->"
+      },
+      {
+        "title": "Nueva temporada de clubes estudiantiles",
+        "slug": "clubes-estudiantiles-nueva-temporada",
+        "status": "publish",
+        "category": "Vida escolar",
+        "thumbnail": "academic-innovation.webp",
+        "excerpt": "Robótica, teatro, música, deportes y acción ambiental abren inscripciones.",
+        "content": "<!-- wp:paragraph --><p>Los clubes extracurriculares abren una nueva temporada con propuestas para diferentes edades e intereses.</p><!-- /wp:paragraph --><!-- wp:paragraph --><p>Las familias pueden consultar horarios y cupos con la coordinación de bienestar estudiantil.</p><!-- /wp:paragraph -->"
       }
     ]
   },
@@ -103,18 +156,25 @@
       "location": "primary",
       "name": "Menú Principal",
       "items": [
-        { "title": "Inicio", "url": "/" },
-        { "title": "El Colegio", "url": "/el-colegio/" },
-        { "title": "Oferta Académica", "url": "/oferta-academica/" },
-        { "title": "Admisiones", "url": "/admisiones/" },
-        { "title": "Noticias", "url": "/noticias/" },
-        { "title": "Contacto", "url": "/contacto/" }
+        { "label": "Inicio", "slug": "inicio" },
+        { "label": "El Colegio", "slug": "el-colegio" },
+        { "label": "Proyecto Educativo", "slug": "proyecto-educativo" },
+        { "label": "Oferta Académica", "slug": "oferta-academica" },
+        { "label": "Admisiones", "slug": "admisiones" },
+        { "label": "Noticias", "slug": "noticias" },
+        { "label": "Eventos", "slug": "eventos" },
+        { "label": "Contacto", "slug": "contacto" }
       ]
     }
   ],
   "settings": {
-    "show_on_front": "page",
-    "page_on_front": "inicio",
-    "page_for_posts": "noticias"
+    "options": {
+      "blogname": "Colegio Horizonte",
+      "blogdescription": "Aprender hoy para transformar el mañana",
+      "permalink_structure": "/%postname%/"
+    },
+    "theme_mods": {
+      "webnova_layout_width": "full"
+    }
   }
 }

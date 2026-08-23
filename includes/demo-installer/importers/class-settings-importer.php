@@ -44,9 +44,29 @@ class WebNova_Demo_Settings_Importer
             }
         }
 
+        $options = (array) ($settings['options'] ?? []);
+        $allowed_options = [
+            'blogname' => 'sanitize_text_field',
+            'blogdescription' => 'sanitize_text_field',
+        ];
+
+        foreach ($allowed_options as $option_name => $sanitize_callback) {
+            if (isset($options[$option_name])) {
+                update_option($option_name, call_user_func($sanitize_callback, (string) $options[$option_name]));
+            }
+        }
+
+        if (! empty($options['permalink_structure'])) {
+            $permalink_structure = sanitize_text_field((string) $options['permalink_structure']);
+
+            if ('/' === substr($permalink_structure, 0, 1) && '/' === substr($permalink_structure, -1)) {
+                update_option('permalink_structure', $permalink_structure);
+            }
+        }
+
         // Apply site icon
-        if (! empty($settings['options']['site_icon'])) {
-            $media_key = 'media:' . sanitize_title($settings['options']['site_icon']);
+        if (! empty($options['site_icon'])) {
+            $media_key = 'media:' . sanitize_title($options['site_icon']);
             $attach_id = $this->state_manager->get_item_id('media', $media_key);
             if ($attach_id) {
                 update_option('site_icon', $attach_id);
@@ -61,10 +81,14 @@ class WebNova_Demo_Settings_Importer
             delete_option('webnova_installer_front_page');
         }
 
-        $news_page_slug = $settings['page_for_posts'] ?? 'noticias';
-        $news_page_id = $this->state_manager->get_item_id('content', 'page:' . $news_page_slug);
-        if ($news_page_id) {
-            update_option('page_for_posts', $news_page_id);
+        if (! empty($settings['page_for_posts'])) {
+            $news_page_slug = sanitize_title((string) $settings['page_for_posts']);
+            $news_page_id = $this->state_manager->get_item_id('content', 'page:' . $news_page_slug);
+            if ($news_page_id) {
+                update_option('page_for_posts', $news_page_id);
+            }
+        } else {
+            update_option('page_for_posts', 0);
         }
 
         return 1;

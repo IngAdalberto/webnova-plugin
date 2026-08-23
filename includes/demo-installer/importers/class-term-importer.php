@@ -22,7 +22,7 @@ class WebNova_Demo_Term_Importer
 
     public function import()
     {
-        $data = $this->validator->load_data('layout.json');
+        $data = $this->validator->load_data('layout');
         $taxonomies = (array) ($data['taxonomies'] ?? []);
 
         if (empty($taxonomies)) {

@@ -38,10 +38,13 @@ class WebNova_Demo_Menu_Importer
             }
 
             $key = 'menu:' . $slug;
-            $menu_obj = wp_get_nav_menu_object($slug);
+            $menu_name = sanitize_text_field((string) ($menu_data['name'] ?? $slug));
+            $stored_menu_id = $this->state_manager->get_item_id('menus', $key);
+            $menu_obj = $stored_menu_id > 0 ? wp_get_nav_menu_object($stored_menu_id) : false;
+            $menu_obj = $menu_obj ?: wp_get_nav_menu_object($menu_name);
 
             if (! $menu_obj) {
-                $menu_id = wp_create_nav_menu(sanitize_text_field((string) ($menu_data['name'] ?? $slug)));
+                $menu_id = wp_create_nav_menu($menu_name);
                 if (is_wp_error($menu_id)) {
                     continue;
                 }
@@ -52,7 +55,8 @@ class WebNova_Demo_Menu_Importer
             $this->state_manager->set_item_id('menus', $key, $menu_id);
             update_term_meta($menu_id, '_webnova_demo_key', $key);
 
-            $this->import_menu_items($menu_id, (array) ($menu_data['items'] ?? []));
+            $position = 1;
+            $this->import_menu_items($menu_id, (array) ($menu_data['items'] ?? []), 0, $position);
 
             $locations = get_theme_mod('nav_menu_locations', []);
             $locations[$slug] = $menu_id;
@@ -64,7 +68,7 @@ class WebNova_Demo_Menu_Importer
         return $count;
     }
 
-    private function import_menu_items(int $menu_id, array $items, int $parent_id = 0): void
+    private function import_menu_items(int $menu_id, array $items, int $parent_id, int &$position): void
     {
         foreach ($items as $item) {
             $page_slug = sanitize_title((string) ($item['slug'] ?? ''));
@@ -83,11 +87,13 @@ class WebNova_Demo_Menu_Importer
                 continue; // No puede enlazarse a nada
             }
 
+            $item_label = (string) ($item['label'] ?? $item['title'] ?? '');
             $menu_item_data = [
-                'menu-item-title'   => sanitize_text_field((string) ($item['label'] ?? '')),
+                'menu-item-title'   => sanitize_text_field($item_label),
                 'menu-item-classes' => sanitize_text_field((string) ($item['classes'] ?? '')),
                 'menu-item-status'  => 'publish',
                 'menu-item-parent-id' => $parent_id,
+                'menu-item-position' => $position,
             ];
 
             if ($object_id > 0) {
@@ -111,14 +117,13 @@ class WebNova_Demo_Menu_Importer
                 }
             }
 
-            if (! $found) {
-                $item_id = wp_update_nav_menu_item($menu_id, 0, $menu_item_data);
-                if (! is_wp_error($item_id) && ! empty($item['children'])) {
-                    $this->import_menu_items($menu_id, (array) $item['children'], (int) $item_id);
-                }
-            } else {
+            $item_id = wp_update_nav_menu_item($menu_id, $found ? (int) $found : 0, $menu_item_data);
+
+            if (! is_wp_error($item_id)) {
+                $position++;
+
                 if (! empty($item['children'])) {
-                    $this->import_menu_items($menu_id, (array) $item['children'], (int) $found);
+                    $this->import_menu_items($menu_id, (array) $item['children'], (int) $item_id, $position);
                 }
             }
         }

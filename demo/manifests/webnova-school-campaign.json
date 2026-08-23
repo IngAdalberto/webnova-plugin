@@ -1,61 +1,53 @@
 {
   "id": "webnova-school-campaign",
   "name": "Landing WebNova para Colegios",
-  "description": "Plantilla comercial interna para vender sitios web a instituciones educativas.",
-  "version": "1.0.0",
+  "description": "Landing de conversión para campañas digitales dirigidas a directivos de instituciones educativas.",
+  "version": "2.0.0",
   "type": "campaign",
   "author": "WebNova",
   "status": "stable",
   "images": [
     {
-      "id": "hero-campaign",
+      "id": "school-campaign-mockup",
       "demo": "webnova-school-campaign",
       "use": "hero",
-      "aspect_ratio": "16:9",
-      "dimensions": "1920x1080",
+      "aspect_ratio": "3:2",
+      "dimensions": "1536x1024",
       "max_weight_kb": 350,
       "type": "fallback",
-      "search_query": "web design agency presentation modern",
-      "alt": "Agencia diseñando web para colegios",
-      "local_file": "demo/media/campaign/hero-campaign.jpg"
+      "search_query": "premium multidispositivo sitio web para colegios",
+      "alt": "Sitio web escolar mostrado en computador, tableta y celular",
+      "local_file": "demo/media/campaign/school-campaign-mockup.webp"
     }
   ],
   "layout": {
     "pages": [
       {
-        "title": "Inicio",
-        "slug": "inicio",
+        "title": "Sitios web para colegios | WebNova",
+        "slug": "landing-campania-colegios",
         "status": "publish",
+        "excerpt": "Convierte más visitas en solicitudes de admisión con un sitio web especializado para instituciones educativas.",
         "is_front_page": true,
+        "show_page_title": false,
+        "show_header": false,
+        "show_footer": false,
         "sections": [
           "webnova/landing-colegios-hero",
           "webnova/landing-colegios-problem",
           "webnova/landing-colegios-benefits",
-          "webnova/landing-colegios-features",
-          "webnova/landing-colegios-pricing",
-          "webnova/landing-colegios-process",
           "webnova/landing-colegios-demo",
+          "webnova/landing-colegios-features",
+          "webnova/landing-colegios-process",
+          "webnova/landing-colegios-pricing",
           "webnova/landing-colegios-faq",
           "webnova/landing-colegios-cta-diagnosis"
         ]
       }
     ]
   },
-  "menus": [
-    {
-      "location": "primary",
-      "name": "Menú Principal",
-      "items": [
-        { "title": "El Problema", "url": "#problema" },
-        { "title": "Solución", "url": "#solucion" },
-        { "title": "Planes", "url": "#planes" },
-        { "title": "Demo", "url": "#demo" },
-        { "title": "Contacto", "url": "#contacto" }
-      ]
-    }
-  ],
+  "menus": [],
   "settings": {
     "show_on_front": "page",
-    "page_on_front": "inicio"
+    "page_on_front": "landing-campania-colegios"
   }
 }

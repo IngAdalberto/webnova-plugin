@@ -109,13 +109,28 @@ class WebNova_Demo_Content_Importer
 
     private function update_post(int $post_id, array $item, string $post_type, string $key): void
     {
-        // Actualizamos el contenido para reflejar los nuevos patrones si es necesario
-        if (isset($item['sections']) || isset($item['content'])) {
-            wp_update_post([
-                'ID'           => $post_id,
-                'post_content' => $this->build_content($item),
-            ]);
+        $post_data = [
+            'ID' => $post_id,
+            'post_type' => $post_type,
+        ];
+
+        if (isset($item['title'])) {
+            $post_data['post_title'] = sanitize_text_field((string) $item['title']);
         }
+
+        if (isset($item['excerpt'])) {
+            $post_data['post_excerpt'] = sanitize_text_field((string) $item['excerpt']);
+        }
+
+        if (isset($item['status'])) {
+            $post_data['post_status'] = sanitize_key((string) $item['status']);
+        }
+
+        if (isset($item['sections']) || isset($item['content'])) {
+            $post_data['post_content'] = $this->build_content($item);
+        }
+
+        wp_update_post($post_data);
         
         $this->assign_metadata($post_id, $item);
     }
@@ -141,6 +156,25 @@ class WebNova_Demo_Content_Importer
 
     private function assign_metadata(int $post_id, array $item): void
     {
+        if (get_post_type($post_id) === 'page') {
+            $show_title = array_key_exists('show_page_title', $item)
+                ? (bool) $item['show_page_title']
+                : empty($item['sections']);
+
+            update_post_meta($post_id, '_webnova_show_page_title', $show_title);
+
+            $visibility_options = [
+                'show_header' => '_webnova_show_primary_menu',
+                'show_footer' => '_webnova_show_footer',
+            ];
+
+            foreach ($visibility_options as $item_key => $meta_key) {
+                if (array_key_exists($item_key, $item)) {
+                    update_post_meta($post_id, $meta_key, (bool) $item[$item_key]);
+                }
+            }
+        }
+
         // Featured image
         if (! empty($item['thumbnail'])) {
             $media_key = 'media:' . sanitize_title($item['thumbnail']);

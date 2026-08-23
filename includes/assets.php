@@ -58,6 +58,8 @@ function webnova_starter_kit_enqueue_page_title_visibility_editor_assets(): void
         return;
     }
 
+    $script_path = WEBNOVA_STARTER_KIT_PATH . 'assets/js/page-title-visibility.js';
+
     wp_enqueue_script(
         'webnova-page-title-visibility',
         WEBNOVA_STARTER_KIT_URL . 'assets/js/page-title-visibility.js',
@@ -68,7 +70,7 @@ function webnova_starter_kit_enqueue_page_title_visibility_editor_assets(): void
             'wp-element',
             'wp-plugins',
         ],
-        WEBNOVA_STARTER_KIT_VERSION,
+        file_exists($script_path) ? (string) filemtime($script_path) : WEBNOVA_STARTER_KIT_VERSION,
         true
     );
 }
